@@ -9,9 +9,12 @@ const config = {
 			// default options are shown
 			pages: 'build',
 			assets: 'build',
-			fallback: null
-		})
-	}
+			fallback: null,
+		}),
+		files: {
+			routes: 'src/pages',
+		},
+	},
 };
 
 export default config;
