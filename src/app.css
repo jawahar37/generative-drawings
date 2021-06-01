@@ -1,0 +1,98 @@
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	color: #333;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --h6: 1.4rem;
+  --h5: 1.6rem;
+  --h4: 1.8rem;
+  --h3: 2.0rem;
+  --h2: 2.2rem;
+  --h1: 3.2rem;
+  --lh: 1.5
+}
+
+h6 {
+  font-size: var(--h6)
+}
+
+h5 {
+  font-size: var(--h5)
+}
+
+h4 {
+  font-size: var(--h4)
+}
+
+h3 {
+  font-size: var(--h3)
+}
+
+h2 {
+  font-size: var(--h2)
+}
+
+h1 {
+  font-size: var(--h1)
+}
+
+
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+a {
+	color: rgb(0,100,200);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	margin: 0;
+	padding: 0.25em 0.5em;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 0.3em;
+}
+
+input[type=range] {
+	padding: 0;
+}
+
+input:disabled {
+	color: #ccc;
+}
+
+button {
+	color: #333;
+	background-color: #f4f4f4;
+	outline: none;
+}
+
+button:disabled {
+	color: #999;
+}
+
+button:not(:disabled):active {
+	background-color: #ddd;
+}
+
+button:focus {
+	border-color: #666;
+}

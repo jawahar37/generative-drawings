@@ -5,4 +5,9 @@
   <link rel="manifest" href="/site.webmanifest">
   <title>Generative Drawings</title>
 </svelte:head>
+
+<script>
+  import "../app.css"
+</script>
+
 <slot></slot>
