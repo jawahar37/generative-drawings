@@ -43,7 +43,7 @@
     
     box-sizing: border-box;
     width: 100%;
-    padding: 16px;
+    padding: 32px 16px;
 
     display: flex;
     flex-direction: column;
