@@ -19,7 +19,8 @@ body {
   --h3: 2.0rem;
   --h2: 2.2rem;
   --h1: 3.2rem;
-  --lh: 1.5
+  --p: 1.05rem;
+  --lh: 1.4;
 }
 
 h6 {
@@ -44,6 +45,11 @@ h2 {
 
 h1 {
   font-size: var(--h1)
+}
+
+p {
+  font-size: var(--p);
+  line-height: var(--lh);
 }
 
 

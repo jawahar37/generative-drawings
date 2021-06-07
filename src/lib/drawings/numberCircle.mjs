@@ -64,12 +64,7 @@ function init(canvasID, canvasWidth, canvasHeight) {
 
   ctx = getScaled2dContext(canvas, width, height);
 
-  // let pointCountControl = document.getElementById("circle-point-count");
-  // pointCountControl.oninput = function(e) {
-  //   draw(e.target.value);
-  // };
   let n = 10;
-  // pointCountControl.value = n;
   draw(n);
 }
 
