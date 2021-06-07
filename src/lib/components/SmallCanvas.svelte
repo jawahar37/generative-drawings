@@ -14,7 +14,7 @@
 	});
 </script>
 
-<div class="container-background" style="{`background-color: ${style.background}; color: ${style.text}`}">
+<div class="container-background" style="{`--backgroundColor: ${style.background}; --textColor: ${style.text}`}">
   <div class="container flexbox">
     <div class="info">
       <div class="about">
@@ -36,16 +36,22 @@
 
 <style>
   .container-background {
+    background-color: var(--backgroundColor);
+     color: var(--textColor);
     width: 100%;
   }
 
   .flexbox {
     display: flex;
     flex-direction: column;
+    gap: 30px;
   }
 
   .info {
     flex: 1 1 0%;
+    padding: 16px; 
+    border: 1px solid var(--textColor);
+    border-radius: 10px;
   }
 
   .canvas {
@@ -67,6 +73,12 @@
     height: 400px;
   }
 
+  @media (max-width: 400px) {
+    canvas {
+      height: auto;
+      max-width: 100%;
+    }
+  }
   @media (min-width: 576px) {
     .container {
       max-width: 540px;
