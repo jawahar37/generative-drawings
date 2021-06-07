@@ -77,6 +77,10 @@ input, button, select, textarea, .btn-radio+label{
   pointer-events: none;
 }
 
+.btn-radio+label {
+  display: inline !important;
+}
+
 .btn-radio:checked+label {
   background: var(--textColor);
   color: var(--backgroundColor);
@@ -105,19 +109,22 @@ button:not(:disabled):active {
   background-color: var(--textColor);
 }
 
-button:focus {
-  border-color: #666;
-}
-
 /* .oOo.oOo.oOo.oOo.oOo.oOo.oOo.
            Utilities
    .OoO.OoO.OoO.OoO.OoO.OoO.OoO.
 */
-
-.control-row {
+.control-item {
+  margin: 0.8em 0;
+}
+.control-item label {
+  display: block;
+  margin-bottom: 0.2em;
+} 
+.control-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px 0;
+  gap: 0.6em;
 }
+
+

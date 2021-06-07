@@ -10,14 +10,17 @@
     background:"#fffdf2",
     text:"#000000",
   }}>
-  <h2 slot="title">Number Circle</h2>
+  <svelte:fragment slot="title">Number Circle</svelte:fragment>>
   <svelte:fragment slot="about">
     <p>Get evenly spaced points on a circle. Draw lines between them all.</p>
   </svelte:fragment>
   <svelte:fragment slot="control">
-    <div class="control-row">
-      <div><label for="number-circle-points">Points: </label><input id="number-circle-points" type="number" min="2" max="24" bind:value="{n}" on:input={numberCircle.draw(n)} style="width: 4em;"></div>
-      <input type="range" min="2" max="24" step="1" bind:value={n} on:input={numberCircle.draw(n)}>
+    <div class="control-item">
+      <label for="number-circle-points">Points: </label>
+      <div class="control-group">
+        <input id="number-circle-points" type="number" min="2" max="24" bind:value="{n}" on:input={numberCircle.draw(n)} style="width: 6em;">
+        <input type="range" min="2" max="24" step="1" bind:value={n} on:input={numberCircle.draw(n)}>
+      </div>
     </div>
   </svelte:fragment>
 </SmallCanvas>

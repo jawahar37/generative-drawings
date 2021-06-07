@@ -14,11 +14,11 @@
 	});
 </script>
 
-<div class="container-background" style="{`--backgroundColor: ${style.background}; --textColor: ${style.text}`}">
-  <div class="container flexbox">
+<div class="container" style="{`--backgroundColor: ${style.background}; --textColor: ${style.text}`}">
+  <div class="info-container">
     <div class="info">
       <div class="about">
-        <slot name="title"></slot>
+        <h2><slot name="title"></slot></h2>
         <slot name="about"></slot>
       </div>
       {#if $$slots.control}
@@ -29,43 +29,46 @@
       </div>
       {/if}
     </div>
-    <div class="canvas"><canvas {id}/></div>
+  </div>
+  <div class="canvas">
+    <canvas {id}/>
   </div>
 </div>
 
 
 <style>
-  .container-background {
+  .container {
     background-color: var(--backgroundColor);
-     color: var(--textColor);
+    color: var(--textColor);
+    
+    box-sizing: border-box;
     width: 100%;
-  }
+    padding: 16px;
 
-  .flexbox {
     display: flex;
     flex-direction: column;
     gap: 30px;
   }
 
-  .info {
+  .info-container{
     flex: 1 1 0%;
+  }
+
+  .info {
     padding: 16px; 
     border: 1px solid var(--textColor);
     border-radius: 10px;
   }
 
-  .canvas {
-    flex: 1 1 0%;
-    align-self: center;
+  .info h2 {
+    margin-block: 0.2em 0.7em;
   }
 
-  .container {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-
-    padding: 16px;
-    margin: 0 auto;
+  .canvas {
+    flex: 1 1 0%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
   }
 
   canvas {
@@ -80,8 +83,9 @@
     }
   }
   @media (min-width: 576px) {
-    .container {
+    .info {
       max-width: 540px;
+      margin: 0 auto;
     }
     canvas {
       width: 500px;
@@ -89,26 +93,26 @@
     }
   }
   @media (min-width: 768px) {
-    .container {
-      max-width: 720px;
+    .info {
+      max-width: 600px;
     }
     canvas {
       width: 600px;
       height: 600px;
     }
   }
-  @media (min-width: 992px) {
+  @media (min-width: 1000px) {
     .container {
-      max-width: 960px;
-    }
-
-    .flexbox {
       flex-direction: row;
     }
-  }
-  @media (min-width: 1300px) {
-    .container {
-      max-width: 1050px;
+    
+    .info-container {
+      max-width: 600px;
+    }
+
+    .info {
+      max-width: 450px;
+      margin-right: 0;
     }
   }
 </style>
