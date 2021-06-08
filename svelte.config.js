@@ -6,6 +6,7 @@ const config = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		paths: {
 			base: '/generative-drawings',
+			assets: '/generative-drawings',
 		},
 		target: '#svelte',
 		adapter: adapter({
