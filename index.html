@@ -7,16 +7,16 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-904f412a.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-847d34e4.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-da07f3e0.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-b16817ae.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-85b4a3c5.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-d6b84c68.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-e56893db.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-a77b105c.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-a8cd1609.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-75e59784.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-57120da8.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-7896bffb.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-904f412a.js";
+			import { start } from "/generative-drawings/_app/start-85b4a3c5.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -29,8 +29,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/generative-drawings/_app/pages/__layout.svelte-da07f3e0.js"),
-						import("/generative-drawings/_app/pages/index.svelte-b16817ae.js")
+						import("/generative-drawings/_app/pages/__layout.svelte-e56893db.js"),
+						import("/generative-drawings/_app/pages/index.svelte-a77b105c.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -50,20 +50,21 @@
 
 
 
-<main><div class="container svelte-d2i0he" style="--backgroundColor: #fffdf2; --textColor: #000000"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">Number Circle</h2>
-        <p>Get evenly spaced points on a circle. Draw lines between them all.</p>
+<main><section><div class="container svelte-d2i0he" style="--backgroundColor: #fffdf2; --textColor: #000000"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he"><a href="/number-circle" class="link">Number Circle</a></h2>
+          <p>Get evenly spaced points on a circle. Draw lines between them all. <a href="/number-circle" class="link">See more...</a></p>
+    
   </div>
-      <div class="control"><div class="control-item"><label for="number-circle-points">Points: </label>
+        <div class="control"><div class="control-item"><label for="number-circle-points">Points: </label>
       <div class="control-group"><input id="number-circle-points" type="number" min="2" max="24" style="width: 6em;" value="10">
         <input type="range" min="2" max="24" step="1" value="10"></div></div>
   </div></div></div>
-  <div class="canvas svelte-d2i0he"><canvas id="number-circle" class="svelte-d2i0he"></canvas></div>
-</div>
-	<div class="container svelte-d2i0he" style="--backgroundColor: #0D1821; --textColor: #ffffff"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">Square Bloom</h2>
-        <p>Its rule is simple: pick a random spot and draw the largest square possible that doesn&#39;t touch any existing square.</p>
+    <div class="canvas svelte-d2i0he"><canvas id="number-circle" class="svelte-d2i0he"></canvas></div></div>
+</section>
+	<section><div class="container svelte-d2i0he" style="--backgroundColor: #0D1821; --textColor: #ffffff"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">Square Bloom</h2>
+          <p>Its rule is simple: pick a random spot and draw the largest square possible that doesn&#39;t touch any existing square.</p>
     <p>Try tweaking the parameters. While proper inputs lets the canvas draw following the rule, negative values are fun too!</p>
   </div>
-      <div class="control"><div class="control-item control-group" style="padding: 0.5em 0;"><span><input type="radio" name="square-bloom-preset" value="small" class="btn-radio" id="square-bloom-preset-small">
+        <div class="control"><div class="control-item control-group" style="padding: 0.5em 0;"><span><input type="radio" name="square-bloom-preset" value="small" class="btn-radio" id="square-bloom-preset-small">
         <label for="square-bloom-preset-small">Small</label></span>
       <span><input type="radio" name="square-bloom-preset" value="medium" checked class="btn-radio" id="square-bloom-preset-medium">
         <label for="square-bloom-preset-medium">Medium</label></span>
@@ -75,31 +76,31 @@
       <input type="number" id="square-bloom-threshold" step="1" value="2"></div>
     <div class="control-item"><label for="square-bloom-border-width">Line width: </label>
       <input type="number" id="square-bloom-border-width" min="1" step="1" value="2"></div>                    
-    <div class="control-item"><button id="square-bloom-redraw">Redraw</button></div>
+    <div class="control-item"><button class="btn" id="square-bloom-redraw">Redraw</button></div>
   </div></div></div>
-  <div class="canvas svelte-d2i0he"><canvas id="square-bloom" class="svelte-d2i0he"></canvas></div>
-</div>
-	<div class="container svelte-d2i0he" style="--backgroundColor: #453ba4; --textColor: #ffffff"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">10 PRINT</h2>
-        <p>10 PRINT is a program written in the early 80s to run on a Commodore 64 system that generates a maze with a surprisingly simple condition. It prints either a \ or a / with a 50% probability.</p>
+    <div class="canvas svelte-d2i0he"><canvas id="square-bloom" class="svelte-d2i0he"></canvas></div></div>
+</section>
+	<section><div class="container svelte-d2i0he" style="--backgroundColor: #453ba4; --textColor: #ffffff"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">10 PRINT</h2>
+          <p>10 PRINT is a program written in the early 80s to run on a Commodore 64 system that generates a maze with a surprisingly simple condition. It prints either a \ or a / with a 50% probability.</p>
     <p class="code svelte-v31k2v">10 PRINT CHR$ (205.5 + RND (1)); : GOTO 10</p>
   </div>
-      <div class="control"><div class="control-item"><button id="10-print-redraw">Redraw</button></div>
+        <div class="control"><div class="control-item"><button class="btn" id="10-print-redraw">Redraw</button></div>
   </div></div></div>
-  <div class="canvas svelte-d2i0he"><canvas id="10-print" class="svelte-d2i0he"></canvas></div>
-</div>
-	<div class="container svelte-d2i0he" style="--backgroundColor: #4C5454; --textColor: #ffffff"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">Spiro</h2>
-        <p>Tracing the path of a circle rolling around the perimeter of another circle gives a simple spirograph.</p>
+    <div class="canvas svelte-d2i0he"><canvas id="10-print" class="svelte-d2i0he"></canvas></div></div>
+</section>
+	<section><div class="container svelte-d2i0he" style="--backgroundColor: #4C5454; --textColor: #ffffff"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">Spiro</h2>
+          <p>Tracing the path of a circle rolling around the perimeter of another circle gives a simple spirograph.</p>
     <p>Loopiness controls the relative sizes of the inner and outer circles, and Loops controls how many times the outer circle rolls around the inner one.</p>
   </div>
-      <div class="control"><div class="control-item"><label for="spiro-radius">Loopiness:</label>
+        <div class="control"><div class="control-item"><label for="spiro-radius">Loopiness:</label>
       <div class="control-group"><input id="spiro-radius" type="number" min="0" max="1" step="0.01" style="width: 6em;" value="0.667">
         <input type="range" min="0" max="1" step="0.01" value="0.667"></div></div>
     <div class="control-item"><label for="spiro-loops">Loops:</label>
       <div class="control-group"><input id="spiro-loops" type="number" min="0" max="9" step="1" style="width: 6em;" value="3">
         <input type="range" min="0" max="9" step="1" value="3"></div></div>
   </div></div></div>
-  <div class="canvas svelte-d2i0he"><canvas id="spiro" class="svelte-d2i0he"></canvas></div>
-</div></main>
+    <div class="canvas svelte-d2i0he"><canvas id="spiro" class="svelte-d2i0he"></canvas></div></div>
+</section></main>
 
 
 
