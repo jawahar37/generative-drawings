@@ -14,26 +14,28 @@
 	});
 </script>
 
-<div class="container" style="{`--backgroundColor: ${style.background}; --textColor: ${style.text}`}">
-  <div class="info-container">
-    <div class="info">
-      <div class="about">
-        <h2><slot name="title"></slot></h2>
-        <slot name="about"></slot>
+<section>
+  <div class="container" style="{`--backgroundColor: ${style.background}; --textColor: ${style.text}`}">
+    <div class="info-container">
+      <div class="info">
+        <div class="about">
+          <h2><slot name="title"></slot></h2>
+          <slot name="about"></slot>
+        </div>
+        {#if $$slots.control}
+        <div class="control">
+          <slot name="control">
+            <div class="row"></div>
+          </slot>
+        </div>
+        {/if}
       </div>
-      {#if $$slots.control}
-      <div class="control">
-        <slot name="control">
-          <div class="row"></div>
-        </slot>
-      </div>
-      {/if}
+    </div>
+    <div class="canvas">
+      <canvas {id}/>
     </div>
   </div>
-  <div class="canvas">
-    <canvas {id}/>
-  </div>
-</div>
+</section>
 
 
 <style>

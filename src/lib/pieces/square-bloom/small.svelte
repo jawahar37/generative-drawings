@@ -55,7 +55,7 @@
       <input type="number" id="square-bloom-border-width" min="1" step="1" bind:value="{borderWidth}">
     </div>                    
     <div class="control-item">
-      <button id="square-bloom-redraw" on:click={redraw}>Redraw</button>
+      <button class="btn" id="square-bloom-redraw" on:click={redraw}>Redraw</button>
     </div>
   </svelte:fragment>
 </SmallCanvas>

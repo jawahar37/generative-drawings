@@ -17,7 +17,7 @@
   </svelte:fragment>
   <svelte:fragment slot="control">
     <div class="control-item">
-      <button id="10-print-redraw" on:click={_10print.draw}>Redraw</button>
+      <button class="btn" id="10-print-redraw" on:click={_10print.draw}>Redraw</button>
     </div>
   </svelte:fragment>
 </SmallCanvas>
