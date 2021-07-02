@@ -10,9 +10,10 @@
     background:"#fffdf2",
     text:"#000000",
   }}>
-  <svelte:fragment slot="title">Number Circle</svelte:fragment>>
+  <svelte:fragment slot="title"><a href="/number-circle" class="link">Number Circle</a></svelte:fragment>>
   <svelte:fragment slot="about">
-    <p>Get evenly spaced points on a circle. Draw lines between them all.</p>
+    <p>Get evenly spaced points on a circle. Draw lines between them all. <a href="/number-circle" class="link">See more...</a></p>
+    
   </svelte:fragment>
   <svelte:fragment slot="control">
     <div class="control-item">
