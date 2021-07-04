@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths';
 	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
 	import * as numberCircle from "$lib/drawings/numberCircle";
 
@@ -10,9 +11,9 @@
     background:"#fffdf2",
     text:"#000000",
   }}>
-  <svelte:fragment slot="title"><a href="./number-circle" class="link">Number Circle</a></svelte:fragment>>
+  <svelte:fragment slot="title"><a href="${base}/number-circle" class="link">Number Circle</a></svelte:fragment>>
   <svelte:fragment slot="about">
-    <p>Get evenly spaced points on a circle. Draw lines between them all. <a href="./number-circle" class="link">See more...</a></p>
+    <p>Get evenly spaced points on a circle. Draw lines between them all. <a href="${base}/number-circle" class="link">See more...</a></p>
     
   </svelte:fragment>
   <svelte:fragment slot="control">
