@@ -7,17 +7,17 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-ec732fa4.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-d6b84c68.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-005c1a4f.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-8f47e201.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-acfe278f.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-1141171a.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-6f542da4.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-252d9196.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-a8cd1609.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-57120da8.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-b6ac2a63.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-7896bffb.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-ec732fa4.js";
+			import { start } from "/generative-drawings/_app/start-005c1a4f.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -30,8 +30,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/generative-drawings/_app/pages/__layout.svelte-acfe278f.js"),
-						import("/generative-drawings/_app/pages/index.svelte-1141171a.js")
+						import("/generative-drawings/_app/pages/__layout.svelte-6f542da4.js"),
+						import("/generative-drawings/_app/pages/index.svelte-252d9196.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -73,8 +73,12 @@
       <input type="number" id="square-bloom-padding" step="1" value="4"></div>
     <div class="control-item"><label for="square-bloom-threshold">Minimum square size: </label>
       <input type="number" id="square-bloom-threshold" step="1" value="2"></div>
-    <div class="control-item"><label for="square-bloom-border-width">Line width: </label>
-      <input type="number" id="square-bloom-border-width" min="1" step="1" value="2"></div>                    
+    <div class="control-item control-group" style="padding: 0.5em 0;"><span><input type="radio" name="square-bloom-style" value="Fill" class="btn-radio" id="square-bloom-style-Fill">
+          <label for="square-bloom-style-Fill">Fill</label>
+        </span><span><input type="radio" name="square-bloom-style" value="Border" class="btn-radio" id="square-bloom-style-Border">
+          <label for="square-bloom-style-Border">Border</label>
+        </span></div>
+    
     <div class="control-item"><button class="btn" id="square-bloom-redraw">Redraw</button></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="square-bloom" class="svelte-d2i0he"></canvas></div></div>
