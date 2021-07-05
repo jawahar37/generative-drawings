@@ -1,17 +1,22 @@
 <script>
+  import { onMount } from 'svelte';
 	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
 	import * as squareBloom from "$lib/drawings/squareBloom";
+	import { slide } from 'svelte/transition';
 
   let {padding, threshold, borderWidth} = squareBloom.presets.medium;
-
+  let drawStyles = ["Fill", "Border"];
+  let drawStyle = drawStyles[Math.floor(Math.random() * drawStyles.length)];
   function redraw() {
-    squareBloom.draw({padding, threshold, borderWidth});
+    squareBloom.draw(padding, threshold, borderWidth, drawStyle);
   }
 
   function drawPreset(e) {
     ({padding, threshold, borderWidth} = squareBloom.presets[e.target.value]);
-    squareBloom.draw(squareBloom.presets[e.target.value]);
+    squareBloom.draw(padding, threshold, borderWidth, drawStyle);
   }
+
+  onMount(redraw);
 </script>
 
 <SmallCanvas id="square-bloom" init = {squareBloom.init}
@@ -50,10 +55,20 @@
       <label for="square-bloom-threshold">Minimum square size: </label>
       <input type="number" id="square-bloom-threshold" step="1" bind:value="{threshold}">
     </div>
-    <div class="control-item">
-      <label for="square-bloom-border-width">Line width: </label>
-      <input type="number" id="square-bloom-border-width" min="1" step="1" bind:value="{borderWidth}">
-    </div>                    
+    <div class="control-item control-group" style="padding: 0.5em 0;">
+      {#each drawStyles as style}
+        <span>
+          <input type="radio" name="square-bloom-style" bind:group={drawStyle} value="{style}" class="btn-radio" id="square-bloom-style-{style}">
+          <label for="square-bloom-style-{style}">{style}</label>
+        </span>
+      {/each}
+    </div>
+    {#if drawStyle == "Border"}
+      <div class="control-item" transition:slide style="margin-top: 0.2em;">
+        <label for="square-bloom-border-width">Border width: </label>
+        <input type="number" id="square-bloom-border-width" min="1" step="1" bind:value="{borderWidth}" disabled={drawStyle != "Border"}>
+      </div>
+    {/if}
     <div class="control-item">
       <button class="btn" id="square-bloom-redraw" on:click={redraw}>Redraw</button>
     </div>

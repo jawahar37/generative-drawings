@@ -23,11 +23,18 @@ Square.prototype.isPointEnclosed = function(x, y) {
   return this.getChebyshevCenterDistance(x, y) <= this.size;
 };
 
-Square.prototype.draw = function() {
+Square.prototype.stroke = function() {
   ctx.strokeStyle = pallete[rangeFloor(0, pallete.length)];
   ctx.beginPath();
   ctx.rect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
   ctx.stroke();
+};
+
+Square.prototype.fill = function() {
+  ctx.fillStyle = pallete[rangeFloor(0, pallete.length)];
+  ctx.beginPath();
+  ctx.rect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+  ctx.fill();
 };
 
 function generateSquares(root, padding, threshold) {
@@ -78,9 +85,14 @@ function getFeasibleSize(x, y, root) {
   return potentialSize;
 }
 
-function drawSquares(root) {
-  root.draw();
-  root.children.forEach(drawSquares);
+function drawSquaresBorders(root) {
+  root.stroke();
+  root.children.forEach(drawSquaresBorders);
+}
+
+function drawSquaresFill(root) {
+  root.fill();
+  root.children.forEach(drawSquaresFill);
 }
 
 function rangeFloor(min, max) {
@@ -95,18 +107,27 @@ function init(canvasID, canvasWidth, canvasHeight) {
 
   ctx = getScaled2dContext(canvas, width, height);
 
-  // let {padding, threshold, borderWidth} = presets.medium;
-  draw(presets.medium);
+  let {padding, threshold, borderWidth} = presets.medium;
+  draw(padding, threshold, borderWidth);
 }
 
-function draw({padding, threshold, borderWidth}) {
+function draw(padding, threshold, borderWidth, style) {
   ctx.clearRect(0, 0, width, height);
 
   let root = new Square(width/2, height/2, (width + padding)/2);
   generateSquares(root, padding, threshold);
   
   ctx.lineWidth  = borderWidth;
-  drawSquares(root);
+
+  if(style == "Border") {
+    drawSquaresBorders(root);
+  }
+  else if (style == "Fill") {
+    drawSquaresFill(root);
+  }
+  else {
+    drawSquaresBorders(root);
+  }
 }
 
 let presets = {

@@ -146,7 +146,7 @@ button:not(:disabled):active {
    .OoO.OoO.OoO.OoO.OoO.OoO.OoO.
 */
 .control-item {
-  margin: 0.8em 0;
+  margin: 0.8em 0 0 0;
 }
 .control-item label {
   display: block;
