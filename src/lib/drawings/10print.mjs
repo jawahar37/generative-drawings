@@ -3,8 +3,8 @@ import getScaled2dContext from "../canvasUtil.mjs"
 let canvas;
 let ctx, width, height;
 
-function init(canvasID, canvasWidth, canvasHeight) {
-  canvas = document.getElementById(canvasID);
+function init(canvasIn, canvasWidth, canvasHeight) {
+  canvas = canvasIn;
   width = canvasWidth;
   height = canvasHeight;
 

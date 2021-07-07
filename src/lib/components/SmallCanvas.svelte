@@ -8,9 +8,11 @@
     text: "#ffffff",
   };
 
+  let canvas;
+
   onMount(() => {
     let [width, height] = window.innerWidth > 576 ? [600, 600] : [500, 500];
-		init(id, width, height);
+		init(canvas, width, height);
 	});
 </script>
 
@@ -32,7 +34,7 @@
       </div>
     </div>
     <div class="canvas">
-      <canvas {id}/>
+      <canvas {id} bind:this={canvas}/>
     </div>
   </div>
 </section>

@@ -100,8 +100,8 @@ function rangeFloor(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function init(canvasID, canvasWidth, canvasHeight) {
-  canvas = document.getElementById(canvasID);
+function init(canvasIn, canvasWidth, canvasHeight) {
+  canvas = canvasIn;
   width = canvasWidth;
   height = canvasHeight;
 

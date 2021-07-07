@@ -57,8 +57,8 @@ function drawLine(a, b, color="#0f0a36") {
   ctx.stroke();
 }
 
-function init(canvasID, canvasWidth, canvasHeight) {
-  canvas = document.getElementById(canvasID);
+function init(canvasIn, canvasWidth, canvasHeight) {
+  canvas = canvasIn;
   width = canvasWidth;
   height = canvasHeight;
 
