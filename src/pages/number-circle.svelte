@@ -1,7 +1,9 @@
 <script>
   import { onMount } from 'svelte';
+  import MultiLevelSlider from '$lib/components/MultiLevelSlider.svelte'
   
-  let theta_in =   5.535187056324874;
+  // let theta_in =   5.535187056324874;
+  let theta_in =   0.3141592653589793;
   let customFactor = 31;
 
   let width, height;
@@ -16,7 +18,6 @@
     ctx = canvas.getContext('2d');
     draw(theta_in);
   });
-
 
   class CirclePoints {
     constructor(radius, theta, center = [width/2, height/2], phase=3*Math.PI/2) {
@@ -44,16 +45,11 @@
   }
 
   function drawLine(a, b) {
-    ctx.beginPath();
-
     let [x, y] = a;
     ctx.moveTo(x, y);
     [x, y] = b;
     ctx.lineTo(x, y);
-
-    ctx.stroke();
   }
-
 
   function draw(theta) {
     console.log(theta/(2*Math.PI));
@@ -64,30 +60,37 @@
 
     ctx.lineWidth = 1;
     ctx.strokeStyle = "#0f0a36";
-
+    ctx.beginPath();
     for (let i = 0; i < 100; i++) {
       for (let j = 1; j < 100; j++) {
         drawLine(circle.point(i), circle.point(i+j));
       }
     }
+    ctx.stroke();
 
     ctx.lineWidth = 5;
     ctx.strokeStyle = "#E94F37";
-
     circle.drawIndicator();
   }
 
   function multiply(e) {
     theta_in = theta_in * e.target.value;
-    draw(theta_in);
+    redraw();
   }
   function divide(e) {
     theta_in = theta_in / e.target.value;
-    draw(theta_in);
+    redraw();
   }
   function setTheta(e) {
-    theta_in = e.target.value;
-    draw(theta_in);
+    theta_in = parseFloat(e.target.value);
+    redraw();
+  }
+  let multiSlider;
+  function redraw() {
+    window.requestAnimationFrame(function() {
+      draw(theta_in);
+      multiSlider.redraw();
+    });
   }
 </script>
 
@@ -100,9 +103,12 @@
     <div class="control-item">
       <label for="number-circle-points">Base angle: </label>
       <div class="control-group">
-        <input id="number-circle-points" type="number" step="0.00001" bind:value="{theta_in}" on:input={draw(theta_in)} style="width: 10em;">
-        <input type="range" min="0" max="7" step="0.00001" bind:value={theta_in} on:input={draw(theta_in)} style="width: 100%">
+        <input id="number-circle-points" type="number" step="0.00001" bind:value="{theta_in}" on:input={redraw} style="width: 10em;">
+        <input type="range" min="0" max="7" step="0.00001" bind:value={theta_in} on:input={redraw} style="width: 100%">
       </div>
+    </div>
+    <div class="control-item">
+      <MultiLevelSlider bind:value = {theta_in} on:input={redraw} levels=5 base=13 scale={2*Math.PI} bind:this={multiSlider}/>
     </div>
     <div class="control-item">
       <div class="control-group">
