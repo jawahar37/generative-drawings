@@ -110,7 +110,7 @@
       </div>
     </div>
     <div class="control-item">
-      <MultiLevelSlider bind:value = {theta_in} on:input={redraw} levels=5 base=10 scale={2*Math.PI} bind:this={multiSlider}/>
+      <MultiLevelSlider bind:value = {theta_in} on:input={redraw} levels=6 base=10 scale={2*Math.PI} bind:this={multiSlider}/>
     </div>
     <div class="control-item">
       <div class="control-group">

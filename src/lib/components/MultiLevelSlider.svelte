@@ -14,8 +14,9 @@
   let activeForeColor = "#FF6347";
 
   let canvas, ctx;
-  let levelHeight = 40;
-  let width = 350, height = levels * levelHeight;
+  let levelHeight = 35;
+  let width = 350;
+  let height = levels * levelHeight;
 
   let backgroundCanvas;
   onMount(() => {
@@ -59,6 +60,7 @@
     canvas.setPointerCapture(event.pointerId);  //capture the pointer even if it goes outside the bounds of the canvas
     canvas.addEventListener('pointermove', handlePointerMove);
     canvas.addEventListener('pointerup', handlePointerUp);
+    canvas.addEventListener('pointercancel', handlePointerUp);
   }
 
 
@@ -76,9 +78,16 @@
   function handlePointerUp(event) {
     active = false;
     redraw();
+
+    //reset value if pointer is cancelled. If, for example, the touch action is for scrolling the page rather than for the slider
+    if(event.type == "pointercancel") {
+      value = startValue;
+      dispatch('input', {value});
+    }
     //remove pointer listeners after pointer is released
     canvas.removeEventListener('pointermove', handlePointerMove);
     canvas.removeEventListener('pointerup', handlePointerUp);
+    canvas.removeEventListener('pointercancel', handlePointerUp);
   }
 
   function draw() {
@@ -99,9 +108,9 @@
 
       //draw three circles per level for the perception of continuity across the modulo point
       ctx.beginPath();
-      ctx.arc(posX, posY, 20, 0, 2*Math.PI);
-      ctx.arc((posX+width), posY, 20, 0, 2*Math.PI);
-      ctx.arc((posX-width), posY, 20, 0, 2*Math.PI);
+      ctx.arc(posX, posY, levelHeight/2, 0, 2*Math.PI);
+      ctx.arc((posX+width), posY, levelHeight/2, 0, 2*Math.PI);
+      ctx.arc((posX-width), posY, levelHeight/2, 0, 2*Math.PI);
       ctx.fill();
 
       //draw a horizontal track for the active level
@@ -119,7 +128,7 @@
   }
 
   function drawBackground(context) {
-    context.strokeStyle = "#aaa";
+    context.strokeStyle = "#cdc";
     context.lineWidth = 1;
     context.beginPath();
     for(let offset = width/base; offset < width; offset += width/base) {
