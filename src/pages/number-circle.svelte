@@ -39,8 +39,10 @@
       ];
     }
     drawIndicator() {
+      ctx.beginPath();
       drawLine(this.point(0, 15), this.point(0, 60));
       drawLine(this.point(1, 15), this.point(1, 60));
+      ctx.stroke();
     }
   }
 
