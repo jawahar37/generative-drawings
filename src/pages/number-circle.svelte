@@ -165,6 +165,7 @@
     border: 1px solid #eee;
     border-radius: 10px;
     box-shadow: #00000033 2px 2px 10px 2px;
+    z-index: 1;
   }
 
   @media (min-width: 768px) {

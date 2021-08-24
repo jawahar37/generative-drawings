@@ -27,47 +27,54 @@
     backgroundCanvas.width = width;
     backgroundCanvas.height = height;
 
+    precomputeScales();
+
     drawBackground( getScaled2dContext(backgroundCanvas, width, height) );
     redraw();
-    canvas.addEventListener('pointerdown', handlePointerDown);
+    canvas.addEventListener('pointerdown', handlePointerDown, {passive: true});
   });
 
-  let x,y;
+  let mouseX,mouseY;
   let startValue;
   let active = false;
   let activeLevel;
 
-  let initialScale = width/scale;
-  
-  //precompute scales per level.
   let scales = [];
-  for(let i = 0; i < levels; i++) {
-    scales.push(initialScale * Math.pow(base, i));
-  }
   
+  /**
+   * Computes the scales with which the different levels of the slider
+   * relate to the basimal/decimal places of the value and puts them in scale.
+   */
+  function precomputeScales() {
+    let initialScale=width/scale;
+    for(let i=0; i<levels; i++) {
+      scales.push(initialScale * Math.pow(base, i));
+    }
+  }
+
   function handlePointerDown(event) {    
     let rect = canvas.getBoundingClientRect();
-    x = event.clientX - rect.left;
-    y = event.clientY - rect.top;
+    mouseX = event.clientX - rect.left;
+    mouseY = event.clientY - rect.top;
 
     //get index of level selected based on the position on the pointer; inverted to match the inverted levels
-    activeLevel = levels - 1 - Math.floor(y/levelHeight);
+    activeLevel = levels - 1 - Math.floor(mouseY/levelHeight);
     startValue = value;
     active = true;
 
     redraw();
 
     canvas.setPointerCapture(event.pointerId);  //capture the pointer even if it goes outside the bounds of the canvas
-    canvas.addEventListener('pointermove', handlePointerMove);
+    canvas.addEventListener('pointermove', handlePointerMove, {passive: true});
     canvas.addEventListener('pointerup', handlePointerUp);
     canvas.addEventListener('pointercancel', handlePointerUp);
   }
 
 
   function handlePointerMove(event) {
-    event.preventDefault();
+    // event.preventDefault();
     let rect = canvas.getBoundingClientRect();
-    let dx = event.clientX - rect.left - x;
+    let dx = event.clientX - rect.left - mouseX;
 
     //update the value using the scale at the selected level
     value = startValue + dx/scales[activeLevel];
@@ -79,7 +86,7 @@
     active = false;
     redraw();
 
-    //reset value if pointer is cancelled. If, for example, the touch action is for scrolling the page rather than for the slider
+    //reset value if pointer is cancelled. If, for example, the touch action is determined to be for scrolling the page rather than for the slider
     if(event.type == "pointercancel") {
       value = startValue;
       dispatch('input', {value});
@@ -96,6 +103,7 @@
 
       let posX = (value * scales[i]) % width;
       posX = posX >= 0 ? posX : posX + width; //normalize remainder to a positive only modulo
+      
       let posY = levelHeight * (levels - i - 0.5);
 
       if(active && activeLevel == i) {
@@ -128,7 +136,7 @@
   }
 
   function drawBackground(context) {
-    context.strokeStyle = "#cdc";
+    context.strokeStyle = "#bdc";
     context.lineWidth = 1;
     context.beginPath();
     for(let offset = width/base; offset < width; offset += width/base) {
@@ -154,5 +162,6 @@
     height: 100%;
     user-select: none;
     touch-action: pan-y;
+    cursor: crosshair;
   }
 </style>
