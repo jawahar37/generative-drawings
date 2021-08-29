@@ -175,10 +175,10 @@
       order: 1;
     }
     .big-canvas {
+      height: 100vh;
       order: 2; 
     }
     section {
-      height: 100vh;
       flex-flow: row nowrap;
     }
   }

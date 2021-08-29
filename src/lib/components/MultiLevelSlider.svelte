@@ -43,7 +43,7 @@
   
   /**
    * Computes the scales with which the different levels of the slider
-   * relate to the basimal/decimal places of the value and puts them in scale.
+   * relate to the basimal/decimal places of the value and puts them in scales array.
    */
   function precomputeScales() {
     let initialScale=width/scale;
