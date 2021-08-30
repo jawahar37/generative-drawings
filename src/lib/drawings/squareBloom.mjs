@@ -1,4 +1,4 @@
-import getScaled2dContext from "../canvasUtil.mjs"
+import { getScaled2dContext } from "../canvasUtil.mjs"
 
 let canvas;
 let ctx, width, height;
