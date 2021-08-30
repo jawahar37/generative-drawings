@@ -160,6 +160,7 @@
   }
 
   .control {
+    height: fit-content;
     background-color: white;
     padding: 20px;
     border: 1px solid #eee;

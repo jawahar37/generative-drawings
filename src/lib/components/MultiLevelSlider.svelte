@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import { createEventDispatcher } from 'svelte';
-  import getScaled2dContext from "../canvasUtil.mjs"
-  
+  import { getScaled2dContext } from "$lib/canvasUtil.mjs"
+  import { bladeRunner as palette, pickRepeat, shuffle } from "$lib/palettes.mjs"
+
   const dispatch = createEventDispatcher();
 
   export let value;
@@ -27,7 +28,7 @@
     backgroundCanvas.width = width;
     backgroundCanvas.height = height;
 
-    precomputeScales();
+    shuffle(palette);
 
     drawBackground( getScaled2dContext(backgroundCanvas, width, height) );
     redraw();
@@ -38,19 +39,8 @@
   let startValue;
   let active = false;
   let activeLevel;
+  let activeScale;
 
-  let scales = [];
-  
-  /**
-   * Computes the scales with which the different levels of the slider
-   * relate to the basimal/decimal places of the value and puts them in scales array.
-   */
-  function precomputeScales() {
-    let initialScale=width/scale;
-    for(let i=0; i<levels; i++) {
-      scales.push(initialScale * Math.pow(base, i));
-    }
-  }
 
   function handlePointerDown(event) {    
     let rect = canvas.getBoundingClientRect();
@@ -59,6 +49,7 @@
 
     //get index of level selected based on the position on the pointer; inverted to match the inverted levels
     activeLevel = levels - 1 - Math.floor(mouseY/levelHeight);
+    activeScale = width/scale * Math.pow(base, activeLevel);
     startValue = value;
     active = true;
 
@@ -77,7 +68,7 @@
     let dx = event.clientX - rect.left - mouseX;
 
     //update the value using the scale at the selected level
-    value = startValue + dx/scales[activeLevel];
+    value = startValue + dx/activeScale;
     dispatch('input', {value});
     redraw();
   }
@@ -99,21 +90,29 @@
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    for(let i = 0; i < levels; i++) {
+    ctx.strokeStyle = "#444";
 
-      let posX = (value * scales[i]) % width;
+    let remainder = value;
+    for(let i = 0; i < levels; i++) {
+      let posX = (remainder / scale * width) % width;
+      remainder = (remainder * base) % scale;
+
       posX = posX >= 0 ? posX : posX + width; //normalize remainder to a positive only modulo
       
       let posY = levelHeight * (levels - i - 0.5);
 
+      //draw a horizontal track for the active level
       if(active && activeLevel == i) {
-        ctx.fillStyle = activeForeColor;
-        ctx.strokeStyle = activeForeColor;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(0, posY);
+        ctx.lineTo(width, posY);
+        ctx.stroke();
       }
-      else {
-        ctx.fillStyle = foreColor;
-      }
-
+      
+      let place = Math.floor(posX/width * base);
+      ctx.fillStyle = pickRepeat(palette, place);
+    
       //draw three circles per level for the perception of continuity across the modulo point
       ctx.beginPath();
       ctx.arc(posX, posY, levelHeight/2, 0, 2*Math.PI);
@@ -121,13 +120,13 @@
       ctx.arc((posX-width), posY, levelHeight/2, 0, 2*Math.PI);
       ctx.fill();
 
-      //draw a horizontal track for the active level
       if(active && activeLevel == i) {
+        ctx.lineWidth = 5;
         ctx.beginPath();
-        ctx.moveTo(0, posY);
-        ctx.lineTo(width, posY);
+        ctx.arc(posX, posY, levelHeight/2 - 2.5, 0, 2*Math.PI);
         ctx.stroke();
       }
+
     }    
   }
 
@@ -136,7 +135,7 @@
   }
 
   function drawBackground(context) {
-    context.strokeStyle = "#bdc";
+    context.strokeStyle = "#ddd";
     context.lineWidth = 1;
     context.beginPath();
     for(let offset = width/base; offset < width; offset += width/base) {
