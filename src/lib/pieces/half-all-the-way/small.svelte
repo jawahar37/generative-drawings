@@ -15,7 +15,7 @@
     width = canvasWidth;
     height = canvasHeight;
 
-    ctx = getScaled2dContext(canvas, width, height);
+    ctx = getScaled2dContext(canvas, width, height, 3);
 
     draw();
   }
