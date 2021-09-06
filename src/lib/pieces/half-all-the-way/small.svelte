@@ -23,7 +23,7 @@
   function draw() {
     palette = shuffle(paletteImport);
     ctx.clearRect(0, 0, width, height);
-    drawSeries(drawFourSquares, 0, 0, width/2, height/2, 8);
+    drawSeries(drawFourSquares, 0, 0, width/2, height/2, 7);
   }
 
   function drawSeries(elem, x, y, width, height, iterations) {
