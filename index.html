@@ -7,18 +7,18 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-ec9d66fe.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-95ca21d0.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-91f28063.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-30e90914.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-bd1607d2.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-fd39fd04.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/chunks/canvasUtil-f1953d74.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-2e4f06c3.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-15e86869.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/chunks/palettes-226efc67.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-a8cd1609.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-b6ac2a63.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-7896bffb.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-95777983.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-28274be1.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-ec9d66fe.js";
+			import { start } from "/generative-drawings/_app/start-91f28063.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -31,8 +31,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/generative-drawings/_app/pages/__layout.svelte-bd1607d2.js"),
-						import("/generative-drawings/_app/pages/index.svelte-fd39fd04.js")
+						import("/generative-drawings/_app/pages/__layout.svelte-2e4f06c3.js"),
+						import("/generative-drawings/_app/pages/index.svelte-15e86869.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -50,7 +50,19 @@
 
 
 
-<main><section><div class="container svelte-d2i0he" style="--backgroundColor: #fffdf2; --textColor: #000000"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he"><a href="/generative-drawings/number-circle" class="link">Number Circle</a></h2>
+<main><section><div class="container svelte-d2i0he" style="--backgroundColor: #001427; --textColor: #ffffff"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he">Half all the way down</h2>
+          <p>1/2 + 1/4 + 1/8 + 1/16 + ...</p>
+    <p>Based on the album art for <a href="https://www.youtube.com/watch?v=_JmTatkAMwY">Blue - Eiffel 65 (Flume Remix)</a></p>
+    
+  </div>
+        <div class="control"><div class="control-group"><div class="svelte-j87w88 checked"><input type="checkbox"  id="check0" class="svelte-j87w88" checked>
+  <label for="check0">Draw circles</label>    
+</div></div>
+    <div class="control-item"><button class="btn" id="new-redraw">Redraw</button></div>
+  </div></div></div>
+    <div class="canvas svelte-d2i0he"><canvas id="new" class="svelte-d2i0he"></canvas></div></div>
+</section>
+	<section><div class="container svelte-d2i0he" style="--backgroundColor: #fffdf2; --textColor: #000000"><div class="info-container svelte-d2i0he"><div class="info svelte-d2i0he"><div class="about"><h2 class="svelte-d2i0he"><a href="/generative-drawings/number-circle" class="link">Number Circle</a></h2>
           <p>Get evenly spaced points on a circle. Draw lines between them all. <a href="/generative-drawings/number-circle" class="link">See more...</a></p>
     
   </div>
