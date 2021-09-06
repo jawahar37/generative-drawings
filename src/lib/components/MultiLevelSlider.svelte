@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { createEventDispatcher } from 'svelte';
   import { getScaled2dContext } from "$lib/canvasUtil.mjs"
-  import { bladeRunner as palette, pickRepeat, shuffle } from "$lib/palettes.mjs"
+  import { bladeRunner as paletteImport, pickRepeat, shuffle } from "$lib/palettes.mjs"
 
   const dispatch = createEventDispatcher();
 
@@ -11,8 +11,7 @@
   export let scale = 1;
   export let base = 10;
 
-  let foreColor = "#2CA6A4";
-  let activeForeColor = "#FF6347";
+  let palette;
 
   let canvas, ctx;
   let levelHeight = 35;
@@ -28,7 +27,7 @@
     backgroundCanvas.width = width;
     backgroundCanvas.height = height;
 
-    shuffle(palette);
+    palette = shuffle(paletteImport);
 
     drawBackground( getScaled2dContext(backgroundCanvas, width, height) );
     redraw();
@@ -88,6 +87,10 @@
     canvas.removeEventListener('pointercancel', handlePointerUp);
   }
 
+  export function redraw() {
+    window.requestAnimationFrame(draw);
+  }
+
   function draw() {
     ctx.clearRect(0, 0, width, height);
     ctx.strokeStyle = "#444";
@@ -128,10 +131,6 @@
       }
 
     }    
-  }
-
-  export function redraw() {
-    window.requestAnimationFrame(draw);
   }
 
   function drawBackground(context) {

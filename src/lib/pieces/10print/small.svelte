@@ -1,8 +1,6 @@
 <script>
 	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
 	import * as _10print from "$lib/drawings/10print";
-
-  let n = 10;
 </script>
 
 <SmallCanvas id="10-print" init = {_10print.init}
