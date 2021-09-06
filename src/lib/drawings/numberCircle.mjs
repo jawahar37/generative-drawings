@@ -3,49 +3,50 @@ import { getScaled2dContext } from "../canvasUtil.mjs"
 let canvas;
 let ctx, width, height;
 
+export class CirclePoints {
+  constructor(radius, theta, center = [width/2, height/2], phase=3*Math.PI/2) {
+    this.radius = radius;
+    this.center = center;
+    this.theta = theta;
+    this.phase = phase;
+  }
+  point(i, radiusOffset) {
+    let radius = this.radius;
+    if(radiusOffset !== undefined) {
+      radius += radiusOffset;
+    }
 
-let pallete = function(i) {
-  let colors = ["#150578", "#D64045",];
-  return colors[i % colors.length];
-};
-
-function PolarCircle(radius, center = [width/2, height/2]) {
-  let cartesian = function(theta) {
+    let angle = this.phase + i*this.theta;
     return [
-      center[0] + radius * Math.cos(theta),
-      center[1] + radius * Math.sin(theta)
+      this.center[0] + radius * Math.cos(angle),
+      this.center[1] + radius * Math.sin(angle)
     ];
-  };
-  
-  this.makePoints = function(n, phase = 3*Math.PI/2) {
-    let theta = 2 * Math.PI/n;	//angle between points
-    let pointer =  function(i) {
-      return cartesian(phase + i*theta);
-    };
-    return pointer;
-  };
+  }
+  drawIndicator() {
+    ctx.beginPath();
+    drawLine(this.point(0, 15), this.point(0, 60));
+    drawLine(this.point(1, 15), this.point(1, 60));
+    ctx.stroke();
+  }
 }
 
 function draw(n) {
   ctx.clearRect(0, 0, width, height);
 
-  let circle = new PolarCircle(height*0.45);
+  let circle = new CirclePoints(height*0.45, 2*Math.PI/n);
 
-  let pointer = circle.makePoints(n);	//pointer makes points
-  drawAllLines(pointer, n);
-}
-
-function drawAllLines(pointer, n, color="#0f0a36") {
   ctx.lineWidth = 1;
+  ctx.strokeStyle = "#0f0a36";
+
   for (let i = 0; i < n-1; i++) {
     for (let j = n-1; j > i; j--) {
-      drawLine(pointer(i), pointer(j), color);
+      drawLine(circle.point(i), circle.point(j));
     }
   }
 }
 
-function drawLine(a, b, color="#0f0a36") {
-  ctx.strokeStyle = color;
+
+function drawLine(a, b) {
   ctx.beginPath();
 
   let [x, y] = a;
@@ -62,7 +63,7 @@ function init(canvasIn, canvasWidth, canvasHeight) {
   width = canvasWidth;
   height = canvasHeight;
 
-  ctx = getScaled2dContext(canvas, width, height);
+  ctx = getScaled2dContext(canvas, width, height, 4);
 
   let n = 10;
   draw(n);
