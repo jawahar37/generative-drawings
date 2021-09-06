@@ -98,7 +98,6 @@ input, select, textarea, .btn-radio+label, .btn{
   font-size: inherit;
   margin: 0;
   padding: 0.25em 0.5em;
-  box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: var(--border-radius);
 }
