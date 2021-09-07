@@ -128,7 +128,7 @@
   <svelte:fragment slot="title">Half all the way down</svelte:fragment>>
   <svelte:fragment slot="about">
     <p>1/2 + 1/4 + 1/8 + 1/16 + ...</p>
-    <p>Based on the album art for <a href="https://www.youtube.com/watch?v=_JmTatkAMwY">Blue - Eiffel 65 (Flume Remix)</a></p>
+    <p>Based on the album art for <a class=link href="https://www.youtube.com/watch?v=_JmTatkAMwY">Blue - Eiffel 65 (Flume Remix)</a></p>
     
   </svelte:fragment>
   <svelte:fragment slot="control">
