@@ -23,7 +23,19 @@
   function draw() {
     palette = shuffle(paletteImport);
     ctx.clearRect(0, 0, width, height);
-    drawSeries(drawFourSquares, 0, 0, width/2, height/2, 7);
+
+    let elementFunction;
+    if(drawCirclePoints) {
+      elementFunction = function(...args) {
+        drawFourSquares(...args);
+        drawCircleIndicator(...args);
+      }
+    }
+    else {
+      elementFunction = drawFourSquares;
+    }
+
+    drawSeries(elementFunction, 0, 0, width/2, height/2, 7);
   }
 
   function drawSeries(elem, x, y, width, height, iterations) {
@@ -96,11 +108,13 @@
     ctx.beginPath();
     ctx.rect(x + width, y + height, width, height);
     ctx.fill();
+  }
 
+  function drawCircleIndicator(x, y, width, height) {
     if(drawCirclePoints) {
       ctx.fillStyle = palette[4];
       ctx.beginPath();
-      ctx.arc(x, y, width/11, 0, 2*Math.PI);
+      ctx.arc(x, y, width/20, 0, 2*Math.PI);
       ctx.fill();
     }
   }
