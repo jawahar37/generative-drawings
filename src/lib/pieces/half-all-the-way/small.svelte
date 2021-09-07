@@ -48,7 +48,7 @@
     recurseHorizontal(elem, x + width, y + height/2, width/2, height/2, iterations);
     
     if(iterations -- > 0) {
-      drawSeries(elem, x + width, y + width, width/2, height/2, iterations);    
+      drawSeries(elem, x + width, y + height, width/2, height/2, iterations);    
     }
     else {
       x += width;
