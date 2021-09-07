@@ -2,7 +2,7 @@
 	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
   import { getScaled2dContext } from "$lib/canvasUtil.mjs";
   import { paleYellowPink as paletteImport, shuffle } from "$lib/palettes.mjs";
-  import CheckLabel from "$lib/components/CheckLabel.svelte";
+  import CheckWithLabel from "$lib/components/CheckWithLabel.svelte";
   
   let canvas;
   let ctx, width, height;
@@ -133,7 +133,7 @@
   </svelte:fragment>
   <svelte:fragment slot="control">
     <div class="control-group">
-      <CheckLabel bind:checked={drawCirclePoints} label="Draw circles"/>
+      <CheckWithLabel bind:checked={drawCirclePoints} label="Draw circles"/>
     </div>
     <div class="control-item">
       <button class="btn" id="new-redraw" on:click={draw}>Redraw</button>
