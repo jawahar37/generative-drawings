@@ -125,17 +125,26 @@ input:disabled {
   color: #ccc;
 }
 
-button {
+.btn {
   background: transparent;
   color: inherit;
   outline: none;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-button:disabled {
+.btn:disabled {
   color: #999;
 }
 
-button:not(:disabled):active {
+.btn:hover, .btn:focus {
+  color: var(--backgroundColor);
+  background-color: var(--textColor);
+}
+
+.btn:not(:disabled):active {
   color: var(--backgroundColor);
   background-color: var(--textColor);
 }
