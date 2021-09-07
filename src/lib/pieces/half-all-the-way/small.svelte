@@ -136,7 +136,7 @@
       <CheckWithLabel bind:checked={drawCirclePoints} label="Draw circles"/>
     </div>
     <div class="control-item">
-      <button class="btn" id="new-redraw" on:click={draw}>Redraw</button>
+      <button class="btn" id="half-redraw" on:click={draw}>Redraw</button>
     </div>
   </svelte:fragment>
 </SmallCanvas>

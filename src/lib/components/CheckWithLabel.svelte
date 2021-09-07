@@ -3,27 +3,29 @@
 </script>
 
 <script>
-  import { createEventDispatcher } from 'svelte';
-  
-  const dispatch = createEventDispatcher();
-  
   export let checked;
   export let disabled=false;
   export let label = "";
   export let id=`check${checkCount++}`;
+
+  let focus = false;
 </script>
 
-<div class:checked>
-  <input type="checkbox" bind:checked={checked} on:input {disabled} {id}/>
+<div class:checked class:focus>
+  <input type="checkbox" {id} bind:checked={checked} on:input {disabled}
+    on:focusin={ () => focus=true } on:focusout={ () => focus = false }/>
   <label for={id}>{label}</label>    
 </div>
 
 <style>
   input {
     margin: 3px 3px 3px 4px;
+    width: 1em;
+    height: 1em;
   }
   div {
     display: flex;
+    align-items: center;
     padding: 0.25em 0.5em;
     border: 1px solid #ccc;
     border-radius: var(--border-radius);
