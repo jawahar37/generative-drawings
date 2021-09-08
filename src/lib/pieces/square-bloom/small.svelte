@@ -3,10 +3,16 @@
 	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
 	import * as squareBloom from "$lib/drawings/squareBloom";
 	import { slide } from 'svelte/transition';
+  import RadioWithLabel from "$lib/components/RadioWithLabel.svelte";
 
-  let {padding, threshold, borderWidth} = squareBloom.presets.medium;
   let drawStyles = ["Fill", "Border"];
   let drawStyle = drawStyles[Math.floor(Math.random() * drawStyles.length)];
+
+  let presets = Object.keys(squareBloom.presets);
+  let presetLabels = presets.map((item) => squareBloom.presets[item].name);
+
+  let {padding, threshold, borderWidth} = squareBloom.presets.medium;
+  
   function redraw() {
     squareBloom.draw(padding, threshold, borderWidth, drawStyle);
   }
@@ -33,19 +39,8 @@
   </svelte:fragment>
   
   <svelte:fragment slot="control">
-    <div class="control-item control-group" style="padding: 0.5em 0;">
-      <span>
-        <input type="radio" name="square-bloom-preset" value="small" class="btn-radio" id="square-bloom-preset-small" on:input={drawPreset}>
-        <label for="square-bloom-preset-small">Small</label>
-      </span>
-      <span>
-        <input type="radio" name="square-bloom-preset" value="medium" checked class="btn-radio" id="square-bloom-preset-medium" on:input={drawPreset}>
-        <label for="square-bloom-preset-medium">Medium</label>
-      </span>
-      <span>
-        <input type="radio" name="square-bloom-preset" value="large" class="btn-radio" id="square-bloom-preset-large" on:input={drawPreset}>
-        <label for="square-bloom-preset-large">Large</label>
-      </span>
+    <div class="control-item">
+      <RadioWithLabel values={presets} labels={presetLabels} on:input={drawPreset} value={presets[1]}/>
     </div>
     <div class="control-item">
       <label for="square-bloom-padding">Space between squares: </label>
@@ -55,13 +50,8 @@
       <label for="square-bloom-threshold">Minimum square size: </label>
       <input type="number" id="square-bloom-threshold" step="1" bind:value="{threshold}">
     </div>
-    <div class="control-item control-group" style="padding: 0.5em 0;">
-      {#each drawStyles as style}
-        <span>
-          <input type="radio" name="square-bloom-style" bind:group={drawStyle} value="{style}" class="btn-radio" id="square-bloom-style-{style}">
-          <label for="square-bloom-style-{style}">{style}</label>
-        </span>
-      {/each}
+    <div class="control-item">
+      <RadioWithLabel values={drawStyles} bind:value={drawStyle} name="drawStyle"/>
     </div>
     {#if drawStyle == "Border"}
       <div class="control-item" transition:slide style="margin-top: 0.2em;">
