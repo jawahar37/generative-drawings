@@ -51,7 +51,7 @@
       <input type="number" id="square-bloom-threshold" step="1" bind:value="{threshold}">
     </div>
     <div class="control-item">
-      <RadioWithLabel values={drawStyles} bind:value={drawStyle} name="drawStyle"/>
+      <RadioWithLabel values={drawStyles} bind:value={drawStyle} name="drawStyle" on:input={redraw}/>
     </div>
     {#if drawStyle == "Border"}
       <div class="control-item" transition:slide style="margin-top: 0.2em;">
