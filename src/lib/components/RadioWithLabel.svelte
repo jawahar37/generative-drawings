@@ -66,10 +66,17 @@
     background: var(--textColor);
     color: var(--backgroundColor);
   }
-  input:focus + label, label:hover {
+  input:focus-visible + label{
     text-decoration: underline;
     outline: dodgerblue auto 1px;
     outline-offset: -1px;
+  }
+  @media(hover) {
+    label:hover {
+      text-decoration: underline;
+      outline: dodgerblue auto 1px;
+      outline-offset: -1px;
+    }
   }
   label:active {
     outline: none;

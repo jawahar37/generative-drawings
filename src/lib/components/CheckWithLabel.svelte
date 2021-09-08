@@ -8,7 +8,6 @@
   export let label = "";
   export let id=`check${checkCount++}`;
 
-  let focus = false;
 </script>
 
 <!--
@@ -19,8 +18,7 @@
 -->
 
 <div class:checked class:focus class:disabled>
-  <input type="checkbox" {id} bind:checked={checked} on:input {disabled}
-    on:focusin={ () => focus=true } on:focusout={ () => focus = false }/>
+  <input type="checkbox" {id} bind:checked={checked} on:input {disabled}/>
   <label for={id}>{label}</label>    
 </div>
 
@@ -47,15 +45,24 @@
     background: var(--textColor);
     color: var(--backgroundColor);
   }
-  div.focus:not(.disabled), div:hover:not(.disabled) {
+
+  div:focus-within:not(.disabled){
     text-decoration: underline;
     outline: dodgerblue auto 1px;
     outline-offset: -1px;
+  }
+  @media(hover) {
+    div:hover:not(.disabled) {
+      text-decoration: underline;
+      outline: dodgerblue auto 1px;
+      outline-offset: -1px;
+    }
   }
   div:active {
     outline: none;
     text-decoration: none;
   }
+  
   div.disabled {
     background-color: #ccc;
     color: #555;

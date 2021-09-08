@@ -111,10 +111,18 @@ input:disabled {
   color: #999;
 }
 
-.btn:hover, .btn:focus {
+.btn:focus-visible {
   text-decoration: underline;
   outline: dodgerblue auto 1px;
   outline-offset: -1px;
+}
+
+@media(hover) {
+  .btn:hover {
+    text-decoration: underline;
+    outline: dodgerblue auto 1px;
+    outline-offset: -1px;
+  }
 }
 
 .btn:not(:disabled):active {
