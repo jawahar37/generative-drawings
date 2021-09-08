@@ -17,7 +17,7 @@
   The 'input' event from the checkbox is bubbled.
 -->
 
-<div class:checked class:focus class:disabled>
+<div class:checked class:disabled>
   <input type="checkbox" {id} bind:checked={checked} on:input {disabled}/>
   <label for={id}>{label}</label>    
 </div>
@@ -46,6 +46,10 @@
     color: var(--backgroundColor);
   }
 
+  input:focus {
+    outline: none;
+  }
+
   div:focus-within:not(.disabled){
     text-decoration: underline;
     outline: dodgerblue auto 1px;
@@ -62,7 +66,7 @@
     outline: none;
     text-decoration: none;
   }
-  
+
   div.disabled {
     background-color: #ccc;
     color: #555;
