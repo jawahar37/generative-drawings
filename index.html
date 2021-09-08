@@ -7,18 +7,18 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-058f7039.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-41c496c0.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-79110a85.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-050764df.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-e023bf9a.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-eca1739c.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-512e0023.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/palettes-b24f50f4.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-a8cd1609.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-9ddce063.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-307783e3.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-7149218a.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-424f897b.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-058f7039.js";
+			import { start } from "/generative-drawings/_app/start-41c496c0.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -31,8 +31,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/generative-drawings/_app/pages/__layout.svelte-050764df.js"),
-						import("/generative-drawings/_app/pages/index.svelte-e023bf9a.js")
+						import("/generative-drawings/_app/pages/__layout.svelte-eca1739c.js"),
+						import("/generative-drawings/_app/pages/index.svelte-512e0023.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -57,8 +57,8 @@
   </div>
         <div class="control"><div class="control-group">
 
-<div class="svelte-18db6zu checked"><input type="checkbox" id="check0"  class="svelte-18db6zu" checked>
-  <label for="check0" class="svelte-18db6zu">Draw circles</label>    
+<div class="svelte-t7hd0c checked"><input type="checkbox" id="check0"  class="svelte-t7hd0c" checked>
+  <label for="check0" class="svelte-t7hd0c">Draw circles</label>    
 </div></div>
     <div class="control-item"><button class="btn" id="half-redraw">Redraw</button></div>
   </div></div></div>
@@ -80,12 +80,12 @@
   </div>
         <div class="control"><div class="control-item">
 
-<div class="radioGroup svelte-16fx770"><div class="radio svelte-16fx770"><input type="radio" name="radio0" id="radio0-small" value="small"  class="svelte-16fx770">
-      <label for="radio0-small" class="svelte-16fx770">Small</label>
-    </div><div class="radio svelte-16fx770"><input type="radio" name="radio0" id="radio0-medium" value="medium"  class="svelte-16fx770">
-      <label for="radio0-medium" class="svelte-16fx770 active">Medium</label>
-    </div><div class="radio svelte-16fx770"><input type="radio" name="radio0" id="radio0-large" value="large"  class="svelte-16fx770">
-      <label for="radio0-large" class="svelte-16fx770">Large</label>
+<div class="radioGroup svelte-1tcf484"><div class="radio svelte-1tcf484"><input type="radio" name="radio0" id="radio0-small" value="small"  class="svelte-1tcf484">
+      <label for="radio0-small" class="svelte-1tcf484">Small</label>
+    </div><div class="radio svelte-1tcf484"><input type="radio" name="radio0" id="radio0-medium" value="medium"  class="svelte-1tcf484">
+      <label for="radio0-medium" class="svelte-1tcf484 active">Medium</label>
+    </div><div class="radio svelte-1tcf484"><input type="radio" name="radio0" id="radio0-large" value="large"  class="svelte-1tcf484">
+      <label for="radio0-large" class="svelte-1tcf484">Large</label>
     </div>
 </div></div>
     <div class="control-item"><label for="square-bloom-padding">Space between squares: </label>
@@ -94,13 +94,14 @@
       <input type="number" id="square-bloom-threshold" step="1" value="2"></div>
     <div class="control-item">
 
-<div class="radioGroup svelte-16fx770"><div class="radio svelte-16fx770"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-16fx770">
-      <label for="drawStyle-Fill" class="svelte-16fx770 active">Fill</label>
-    </div><div class="radio svelte-16fx770"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-16fx770">
-      <label for="drawStyle-Border" class="svelte-16fx770">Border</label>
+<div class="radioGroup svelte-1tcf484"><div class="radio svelte-1tcf484"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-1tcf484">
+      <label for="drawStyle-Fill" class="svelte-1tcf484">Fill</label>
+    </div><div class="radio svelte-1tcf484"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-1tcf484">
+      <label for="drawStyle-Border" class="svelte-1tcf484 active">Border</label>
     </div>
 </div></div>
-    
+    <div class="control-item" style="margin-top: 0.2em;"><label for="square-bloom-border-width">Border width: </label>
+        <input type="number" id="square-bloom-border-width" min="1" step="1"  value="2"></div>
     <div class="control-item"><button class="btn" id="square-bloom-redraw">Redraw</button></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="square-bloom" class="svelte-d2i0he"></canvas></div></div>
