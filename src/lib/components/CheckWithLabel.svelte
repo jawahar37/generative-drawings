@@ -4,14 +4,21 @@
 
 <script>
   export let checked;
-  export let disabled=false;
+  export let disabled = false;
   export let label = "";
   export let id=`check${checkCount++}`;
 
   let focus = false;
 </script>
 
-<div class:checked class:focus>
+<!--
+  Creates a checkbox input and a label.
+  The state is set in 'checked'. The input can be disabled with 'disabled'.
+  If no 'id' is set, it will be auto-generated.
+  The 'input' event from the checkbox is bubbled.
+-->
+
+<div class:checked class:focus class:disabled>
   <input type="checkbox" {id} bind:checked={checked} on:input {disabled}
     on:focusin={ () => focus=true } on:focusout={ () => focus = false }/>
   <label for={id}>{label}</label>    
@@ -26,15 +33,32 @@
   div {
     display: flex;
     align-items: center;
-    padding: 0.25em 0.5em;
+    padding-left: 0.5em;
     border: 1px solid #ccc;
     border-radius: var(--border-radius);
     background: var(--backgroundColor);
     color: var(--textColor);
-    gap: 0.25em;
+    cursor: pointer;
+  }
+  label {
+    padding: 0.25em 0.5em
   }
   div.checked {
     background: var(--textColor);
     color: var(--backgroundColor);
+  }
+  div.focus:not(.disabled), div:hover:not(.disabled) {
+    text-decoration: underline;
+    outline: dodgerblue auto 1px;
+    outline-offset: -1px;
+  }
+  div:active {
+    outline: none;
+    text-decoration: none;
+  }
+  div.disabled {
+    background-color: #ccc;
+    color: #555;
+    cursor: default;
   }
 </style>
