@@ -7,18 +7,18 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-59d0bc86.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-82e30923.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-ae5cada8.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-79110a85.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-2829eb5f.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-21a0ddc6.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-050764df.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-549035cc.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/palettes-b24f50f4.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-a8cd1609.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-150755df.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-803d3c53.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-9ddce063.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-6f837ba3.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-59d0bc86.js";
+			import { start } from "/generative-drawings/_app/start-ae5cada8.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -31,8 +31,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/generative-drawings/_app/pages/__layout.svelte-2829eb5f.js"),
-						import("/generative-drawings/_app/pages/index.svelte-21a0ddc6.js")
+						import("/generative-drawings/_app/pages/__layout.svelte-050764df.js"),
+						import("/generative-drawings/_app/pages/index.svelte-549035cc.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -76,22 +76,30 @@
           <p>Its rule is simple: pick a random spot and draw the largest square possible that doesn&#39;t touch any existing square.</p>
     <p>Try tweaking the parameters. While proper inputs lets the canvas draw following the rule, negative values are fun too!</p>
   </div>
-        <div class="control"><div class="control-item control-group" style="padding: 0.5em 0;"><span><input type="radio" name="square-bloom-preset" value="small" class="btn-radio" id="square-bloom-preset-small">
-        <label for="square-bloom-preset-small">Small</label></span>
-      <span><input type="radio" name="square-bloom-preset" value="medium" checked class="btn-radio" id="square-bloom-preset-medium">
-        <label for="square-bloom-preset-medium">Medium</label></span>
-      <span><input type="radio" name="square-bloom-preset" value="large" class="btn-radio" id="square-bloom-preset-large">
-        <label for="square-bloom-preset-large">Large</label></span></div>
+        <div class="control"><div class="control-item">
+
+<div class="radioGroup svelte-16fx770"><div class="radio svelte-16fx770"><input type="radio" name="radio0" id="radio0-small" value="small"  class="svelte-16fx770">
+      <label for="radio0-small" class="svelte-16fx770">Small</label>
+    </div><div class="radio svelte-16fx770"><input type="radio" name="radio0" id="radio0-medium" value="medium"  class="svelte-16fx770">
+      <label for="radio0-medium" class="svelte-16fx770 active">Medium</label>
+    </div><div class="radio svelte-16fx770"><input type="radio" name="radio0" id="radio0-large" value="large"  class="svelte-16fx770">
+      <label for="radio0-large" class="svelte-16fx770">Large</label>
+    </div>
+</div></div>
     <div class="control-item"><label for="square-bloom-padding">Space between squares: </label>
       <input type="number" id="square-bloom-padding" step="1" value="4"></div>
     <div class="control-item"><label for="square-bloom-threshold">Minimum square size: </label>
       <input type="number" id="square-bloom-threshold" step="1" value="2"></div>
-    <div class="control-item control-group" style="padding: 0.5em 0;"><span><input type="radio" name="square-bloom-style" value="Fill" class="btn-radio" id="square-bloom-style-Fill">
-          <label for="square-bloom-style-Fill">Fill</label>
-        </span><span><input type="radio" name="square-bloom-style" value="Border" class="btn-radio" id="square-bloom-style-Border">
-          <label for="square-bloom-style-Border">Border</label>
-        </span></div>
-    
+    <div class="control-item">
+
+<div class="radioGroup svelte-16fx770"><div class="radio svelte-16fx770"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-16fx770">
+      <label for="drawStyle-Fill" class="svelte-16fx770">Fill</label>
+    </div><div class="radio svelte-16fx770"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-16fx770">
+      <label for="drawStyle-Border" class="svelte-16fx770 active">Border</label>
+    </div>
+</div></div>
+    <div class="control-item" style="margin-top: 0.2em;"><label for="square-bloom-border-width">Border width: </label>
+        <input type="number" id="square-bloom-border-width" min="1" step="1"  value="2"></div>
     <div class="control-item"><button class="btn" id="square-bloom-redraw">Redraw</button></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="square-bloom" class="svelte-d2i0he"></canvas></div></div>
