@@ -27,6 +27,7 @@
     margin: 3px 3px 3px 4px;
     width: 1em;
     height: 1em;
+    cursor: pointer;
   }
   div {
     display: flex;
@@ -36,10 +37,10 @@
     border-radius: var(--border-radius);
     background: var(--backgroundColor);
     color: var(--textColor);
-    cursor: pointer;
   }
   label {
-    padding: 0.25em 0.5em
+    padding: 0.25em 0.5em;
+    cursor: pointer;
   }
   div.checked {
     background: var(--textColor);
