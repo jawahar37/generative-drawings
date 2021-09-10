@@ -14,11 +14,11 @@
   Creates a checkbox input and a label.
   The state is set in 'checked'. The input can be disabled with 'disabled'.
   If no 'id' is set, it will be auto-generated.
-  The 'input' event from the checkbox is bubbled.
+  The 'input' and 'change' events from the checkbox are bubbled.
 -->
 
 <div class:checked class:disabled>
-  <input type="checkbox" {id} bind:checked={checked} on:input {disabled}/>
+  <input type="checkbox" {id} bind:checked={checked} on:input on:change {disabled}/>
   <label for={id}>{label}</label>    
 </div>
 

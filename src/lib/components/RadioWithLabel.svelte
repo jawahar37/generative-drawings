@@ -16,7 +16,7 @@
   Creates a radio group with items from the 'values' .
   If 'labels' is present it is used to set the labels, else 'values' is used.
   The selected radio's value is bound to 'value'.
-  'input' events from the radios are bubbled.
+  'input' and 'change' events from the radios are bubbled.
 -->
 
 <div class="radioGroup">
@@ -27,6 +27,7 @@
         value={item}
         bind:group={value}
         on:input
+        on:change
         {disabled}>
       <label for={`${name}-${item}`} class:active={value == item}>{labels!=undefined ? labels[i] : item}</label>
     </div>

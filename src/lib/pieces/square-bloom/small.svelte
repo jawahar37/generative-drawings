@@ -40,7 +40,7 @@
   
   <svelte:fragment slot="control">
     <div class="control-item">
-      <RadioWithLabel values={presets} labels={presetLabels} on:input={drawPreset} value={presets[1]}/>
+      <RadioWithLabel values={presets} labels={presetLabels} on:change={drawPreset} value={presets[1]}/>
     </div>
     <div class="control-item">
       <label for="square-bloom-padding">Space between squares: </label>
@@ -51,7 +51,7 @@
       <input type="number" id="square-bloom-threshold" step="1" bind:value="{threshold}">
     </div>
     <div class="control-item">
-      <RadioWithLabel values={drawStyles} bind:value={drawStyle} name="drawStyle" on:input={redraw}/>
+      <RadioWithLabel values={drawStyles} bind:value={drawStyle} name="drawStyle" on:change={redraw}/>
     </div>
     {#if drawStyle == "Border"}
       <div class="control-item" transition:slide style="margin-top: 0.2em;">

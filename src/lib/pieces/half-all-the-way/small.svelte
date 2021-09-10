@@ -133,7 +133,7 @@
   </svelte:fragment>
   <svelte:fragment slot="control">
     <div class="control-group">
-      <CheckWithLabel bind:checked={drawCirclePoints} label="Draw circles"/>
+      <CheckWithLabel bind:checked={drawCirclePoints} label="Draw circles" on:change={draw}/>
     </div>
     <div class="control-item">
       <button class="btn" id="half-redraw" on:click={draw}>Redraw</button>
