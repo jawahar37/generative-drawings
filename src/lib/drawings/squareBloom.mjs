@@ -149,6 +149,12 @@ let presets = {
     "threshold": 6,
     "borderWidth": 5
   },
+  "spaced-out": {
+    "name": "Spaced out",
+    "padding": 16,
+    "threshold": -4,
+    "borderWidth": 1
+  },
 };
 
 export  {
