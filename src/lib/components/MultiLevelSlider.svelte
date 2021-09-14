@@ -18,6 +18,8 @@
   let width = 350;
   let height = levels * levelHeight;
 
+  let slider;
+
   let backgroundCanvas;
   onMount(() => {
     canvas.width = width;
@@ -31,7 +33,9 @@
 
     drawBackground( getScaled2dContext(backgroundCanvas, width, height) );
     redraw();
-    canvas.addEventListener('pointerdown', handlePointerDown, {passive: true});
+    slider.addEventListener('pointerdown', handlePointerDown, {passive: true});
+    slider.addEventListener('focus', focus);
+    slider.addEventListener('blur', blur);
   });
 
   let mouseX,mouseY;
@@ -40,30 +44,71 @@
   let activeLevel;
   let activeScale;
 
+  function focus(event) {
+    if(activeLevel == undefined) {
+      activeLevel = 0
+    }
+    active = true;
+    redraw();
+    slider.addEventListener('keydown', keyboardEvent);
+  }
 
-  function handlePointerDown(event) {    
+  function keyboardEvent(event) {
+    if(event.key === "ArrowLeft" || event.keyCode === 37) {
+      value -= scale / Math.pow(base, activeLevel) / 100;
+      dispatch('input', {value});
+      event.preventDefault();
+    }
+    else if(event.key === "ArrowRight" || event.keyCode == 39) {
+      value += scale / Math.pow(base, activeLevel) / 100;
+      dispatch('input', {value});
+      event.preventDefault();
+    }
+    else if(event.key === "ArrowUp" || event.keyCode == 38) {
+      if(activeLevel < levels-1) {
+        activeLevel += 1;
+      }
+      event.preventDefault();
+    }
+    else if(event.key === "ArrowDown" || event.keyCode == 40) {
+      if(activeLevel != 0) {
+        activeLevel -= 1;
+      }
+      event.preventDefault();
+    }
+    redraw();
+  }
+
+  function blur(event) {
+    active = false;
+    redraw();
+    slider.removeEventListener('keydown', keyboardEvent);
+  }
+
+
+  function handlePointerDown(event) {   
     let rect = canvas.getBoundingClientRect();
     mouseX = event.clientX - rect.left;
     mouseY = event.clientY - rect.top;
 
     //get index of level selected based on the position on the pointer; inverted to match the inverted levels
-    activeLevel = levels - 1 - Math.floor(mouseY/levelHeight);
+    activeLevel = levels - (Math.floor(mouseY/levelHeight) + 1);
     activeScale = width/scale * Math.pow(base, activeLevel);
     startValue = value;
     active = true;
 
     redraw();
 
-    canvas.setPointerCapture(event.pointerId);  //capture the pointer even if it goes outside the bounds of the canvas
-    canvas.addEventListener('pointermove', handlePointerMove, {passive: true});
-    canvas.addEventListener('pointerup', handlePointerUp);
-    canvas.addEventListener('pointercancel', handlePointerUp);
+    slider.setPointerCapture(event.pointerId);  //capture the pointer even if it goes outside the bounds of the canvas
+    slider.addEventListener('pointermove', handlePointerMove, {passive: true});
+    slider.addEventListener('pointerup', handlePointerUp);
+    slider.addEventListener('pointercancel', handlePointerUp);
   }
 
 
   function handlePointerMove(event) {
     // event.preventDefault();
-    let rect = canvas.getBoundingClientRect();
+    let rect = slider.getBoundingClientRect();
     let dx = event.clientX - rect.left - mouseX;
 
     //update the value using the scale at the selected level
@@ -73,7 +118,9 @@
   }
 
   function handlePointerUp(event) {
-    active = false;
+    if(slider != document.activeElement) {
+      active = false;
+    }
     redraw();
 
     //reset value if pointer is cancelled. If, for example, the touch action is determined to be for scrolling the page rather than for the slider
@@ -82,9 +129,9 @@
       dispatch('input', {value});
     }
     //remove pointer listeners after pointer is released
-    canvas.removeEventListener('pointermove', handlePointerMove);
-    canvas.removeEventListener('pointerup', handlePointerUp);
-    canvas.removeEventListener('pointercancel', handlePointerUp);
+    slider.removeEventListener('pointermove', handlePointerMove);
+    slider.removeEventListener('pointerup', handlePointerUp);
+    slider.removeEventListener('pointercancel', handlePointerUp);
   }
 
   export function redraw() {
@@ -145,7 +192,7 @@
   }
 </script>
 
-<div style = "width: {width}px; height: {height}px;">
+<div bind:this={slider} style = "width: {width}px; height: {height}px;" tabindex="0">
   <canvas bind:this={backgroundCanvas}/>
   <canvas bind:this={canvas}/>
 </div>
@@ -153,6 +200,10 @@
 <style>
   div {
     position: relative;
+  }
+  div:focus-visible {
+    outline: dodgerblue solid 2px;
+    outline-offset: 2px;
   }
   canvas {
     position: absolute;
