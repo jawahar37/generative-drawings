@@ -153,7 +153,7 @@ let presets = {
     "name": "Spaced out",
     "padding": 16,
     "threshold": -4,
-    "borderWidth": 1
+    "borderWidth": 1.5
   },
 };
 

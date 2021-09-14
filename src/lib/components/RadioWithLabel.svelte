@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     padding: 0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--textColor);
     border-radius: var(--border-radius);
     background: var(--backgroundColor);
     color: var(--textColor);
