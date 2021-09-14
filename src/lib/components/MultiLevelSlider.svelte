@@ -43,35 +43,37 @@
   let active = false;
   let activeLevel;
   let activeScale;
+  let keyBoardActive = false;
 
   function focus(event) {
-    if(activeLevel == undefined) {
-      activeLevel = 0
+    if(activeLevel === undefined) {
+      activeLevel = 0;
     }
     active = true;
+    keyBoardActive = true;
     redraw();
-    slider.addEventListener('keydown', keyboardEvent);
+    slider.addEventListener('keydown', keyboardInput);
   }
 
-  function keyboardEvent(event) {
+  function keyboardInput(event) {
     if(event.key === "ArrowLeft" || event.keyCode === 37) {
       value -= scale / Math.pow(base, activeLevel) / 100;
       dispatch('input', {value});
       event.preventDefault();
     }
-    else if(event.key === "ArrowRight" || event.keyCode == 39) {
+    else if(event.key === "ArrowRight" || event.keyCode === 39) {
       value += scale / Math.pow(base, activeLevel) / 100;
       dispatch('input', {value});
       event.preventDefault();
     }
-    else if(event.key === "ArrowUp" || event.keyCode == 38) {
+    else if(event.key === "ArrowUp" || event.keyCode === 38) {
       if(activeLevel < levels-1) {
         activeLevel += 1;
       }
       event.preventDefault();
     }
-    else if(event.key === "ArrowDown" || event.keyCode == 40) {
-      if(activeLevel != 0) {
+    else if(event.key === "ArrowDown" || event.keyCode === 40) {
+      if(activeLevel > 0) {
         activeLevel -= 1;
       }
       event.preventDefault();
@@ -81,8 +83,9 @@
 
   function blur(event) {
     active = false;
+    keyBoardActive = false;
     redraw();
-    slider.removeEventListener('keydown', keyboardEvent);
+    slider.removeEventListener('keydown', keyboardInput);
   }
 
 
@@ -103,6 +106,7 @@
     slider.addEventListener('pointermove', handlePointerMove, {passive: true});
     slider.addEventListener('pointerup', handlePointerUp);
     slider.addEventListener('pointercancel', handlePointerUp);
+    slider.addEventListener('keydown', () => {slider.focus()})
   }
 
 
@@ -118,7 +122,7 @@
   }
 
   function handlePointerUp(event) {
-    if(slider != document.activeElement) {
+    if(!keyBoardActive) { //only remove active state if keyboard focus isn't active.
       active = false;
     }
     redraw();
