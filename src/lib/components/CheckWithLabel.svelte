@@ -41,6 +41,7 @@
   label {
     padding: 0.25em 0.5em;
     cursor: pointer;
+    margin: 0;
   }
   div.checked {
     background: var(--textColor);
