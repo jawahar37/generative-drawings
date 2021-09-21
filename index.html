@@ -7,18 +7,18 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-ad8349c3.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-297edd12.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-773b9a11.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-17d1e78c.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-b0505657.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-74e04f35.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/palettes-b24f50f4.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-61d1577b.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-52afb88c.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-27e5429c.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-9ba4d391.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-ad8349c3.js";
+			import { start } from "/generative-drawings/_app/start-297edd12.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -32,7 +32,7 @@
 					error: null,
 					nodes: [
 						import("/generative-drawings/_app/pages/__layout.svelte-17d1e78c.js"),
-						import("/generative-drawings/_app/pages/index.svelte-b0505657.js")
+						import("/generative-drawings/_app/pages/index.svelte-74e04f35.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -57,8 +57,8 @@
   </div>
         <div class="control"><div class="control-group">
 
-<div class="svelte-1vipn0r checked"><input type="checkbox" id="check0"  class="svelte-1vipn0r" checked>
-  <label for="check0" class="svelte-1vipn0r">Draw circles</label>    
+<div class="svelte-1chduf4 checked"><input type="checkbox" id="check0"  class="svelte-1chduf4" checked>
+  <label for="check0" class="svelte-1chduf4">Draw circles</label>    
 </div></div>
     <div class="control-item"><button class="btn" id="half-redraw">Redraw</button></div>
   </div></div></div>
@@ -96,13 +96,14 @@
       <input type="number" id="square-bloom-threshold" step="1" value="2"></div>
     <div class="control-item">
 
-<div class="radioGroup svelte-4n3csw"><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-4n3csw" checked>
-      <label for="drawStyle-Fill" class="svelte-4n3csw active">Fill</label>
-    </div><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-4n3csw">
-      <label for="drawStyle-Border" class="svelte-4n3csw">Border</label>
+<div class="radioGroup svelte-4n3csw"><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-4n3csw">
+      <label for="drawStyle-Fill" class="svelte-4n3csw">Fill</label>
+    </div><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-4n3csw" checked>
+      <label for="drawStyle-Border" class="svelte-4n3csw active">Border</label>
     </div>
 </div></div>
-    
+    <div class="control-item" style="margin-top: 0.2em;"><label for="square-bloom-border-width">Border width: </label>
+        <input type="number" id="square-bloom-border-width" min="1" step="1"  value="2"></div>
     <div class="control-item"><button class="btn" id="square-bloom-redraw">Redraw</button></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="square-bloom" class="svelte-d2i0he"></canvas></div></div>
@@ -127,8 +128,8 @@
         <input type="range" min="0" max="9" step="1" value="3"></div>
       <div class="control-group control-item">
 
-<div class="svelte-1vipn0r checked"><input type="checkbox" id="check1"  class="svelte-1vipn0r" checked>
-  <label for="check1" class="svelte-1vipn0r">Spin</label>    
+<div class="svelte-1chduf4 checked"><input type="checkbox" id="check1"  class="svelte-1chduf4" checked>
+  <label for="check1" class="svelte-1chduf4">Spin</label>    
 </div></div></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="spiro" class="svelte-d2i0he"></canvas></div></div>
