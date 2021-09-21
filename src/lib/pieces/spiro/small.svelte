@@ -1,12 +1,14 @@
 <script>
-	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-	import * as spiro from "$lib/drawings/spiro";
+  import CheckWithLabel from "$lib/components/CheckWithLabel.svelte";
+  import SmallCanvas from "$lib/components/SmallCanvas.svelte";
+  import * as spiro from "$lib/drawings/spiro";
 
   let radiusRatio = 0.667;
   let loops = 3;
+  let spin = true;
 
   function redraw() {
-    spiro.draw(radiusRatio,loops);
+    spiro.draw(radiusRatio, loops, spin);
   }
 </script>
 
@@ -33,6 +35,9 @@
       <div class="control-group">
         <input id="spiro-loops" type="number" min="0" max="9" step="1" bind:value={loops} on:input={redraw} style="width: 6em;">
         <input type="range" min="0" max="9" step="1" bind:value={loops} on:input={redraw}>
+      </div>
+      <div class="control-group control-item">
+        <CheckWithLabel label="Spin" bind:checked={spin} />
       </div>
     </div>
   </svelte:fragment>
