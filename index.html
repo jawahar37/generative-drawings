@@ -7,18 +7,18 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-297edd12.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-1c34f69c.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-773b9a11.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-17d1e78c.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-74e04f35.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-4ea1a64f.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/palettes-b24f50f4.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-61d1577b.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-52afb88c.css">
-		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-9ba4d391.css">
+		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-37a3c627.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-297edd12.js";
+			import { start } from "/generative-drawings/_app/start-1c34f69c.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -32,7 +32,7 @@
 					error: null,
 					nodes: [
 						import("/generative-drawings/_app/pages/__layout.svelte-17d1e78c.js"),
-						import("/generative-drawings/_app/pages/index.svelte-74e04f35.js")
+						import("/generative-drawings/_app/pages/index.svelte-4ea1a64f.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -60,7 +60,12 @@
 <div class="svelte-1chduf4 checked"><input type="checkbox" id="check0"  class="svelte-1chduf4" checked>
   <label for="check0" class="svelte-1chduf4">Draw circles</label>    
 </div></div>
-    <div class="control-item"><button class="btn" id="half-redraw">Redraw</button></div>
+    <div class="control-item"><button  class="svelte-1pngwr0"><span class="shadow svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="edge svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="edge-shadow svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="front svelte-1pngwr0">Redraw
+    <span class="disabled svelte-1pngwr0" aria-hidden="true"></span></span>
+</button></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="new" class="svelte-d2i0he"></canvas></div></div>
 </section>
@@ -96,15 +101,19 @@
       <input type="number" id="square-bloom-threshold" step="1" value="2"></div>
     <div class="control-item">
 
-<div class="radioGroup svelte-4n3csw"><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-4n3csw">
-      <label for="drawStyle-Fill" class="svelte-4n3csw">Fill</label>
-    </div><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-4n3csw" checked>
-      <label for="drawStyle-Border" class="svelte-4n3csw active">Border</label>
+<div class="radioGroup svelte-4n3csw"><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-4n3csw" checked>
+      <label for="drawStyle-Fill" class="svelte-4n3csw active">Fill</label>
+    </div><div class="radio svelte-4n3csw"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-4n3csw">
+      <label for="drawStyle-Border" class="svelte-4n3csw">Border</label>
     </div>
 </div></div>
-    <div class="control-item" style="margin-top: 0.2em;"><label for="square-bloom-border-width">Border width: </label>
-        <input type="number" id="square-bloom-border-width" min="1" step="1"  value="2"></div>
-    <div class="control-item"><button class="btn" id="square-bloom-redraw">Redraw</button></div>
+    
+    <div class="control-item"><button  class="svelte-1pngwr0"><span class="shadow svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="edge svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="edge-shadow svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="front svelte-1pngwr0">Redraw
+    <span class="disabled svelte-1pngwr0" aria-hidden="true"></span></span>
+</button></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="square-bloom" class="svelte-d2i0he"></canvas></div></div>
 </section>
@@ -112,7 +121,12 @@
           <p>10 PRINT is a program written in the early 80s to run on a Commodore 64 system that generates a maze with a surprisingly simple condition. It prints either a \ or a / with a 50% probability.</p>
     <p class="code svelte-v31k2v">10 PRINT CHR$ (205.5 + RND (1)); : GOTO 10</p>
   </div>
-        <div class="control"><div class="control-item"><button class="btn" id="10-print-redraw">Redraw</button></div>
+        <div class="control"><div class="control-item"><button  class="svelte-1pngwr0"><span class="shadow svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="edge svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="edge-shadow svelte-1pngwr0" aria-hidden="true"></span>
+  <span class="front svelte-1pngwr0">Redraw
+    <span class="disabled svelte-1pngwr0" aria-hidden="true"></span></span>
+</button></div>
   </div></div></div>
     <div class="canvas svelte-d2i0he"><canvas id="10-print" class="svelte-d2i0he"></canvas></div></div>
 </section>
