@@ -1,3 +1,7 @@
+<!--
+  Adapted from https://www.joshwcomeau.com/animation/3d-button/
+-->
+
 <script>
   export let disabled = false;
 </script>
