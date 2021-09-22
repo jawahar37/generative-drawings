@@ -1,6 +1,7 @@
 <script>
-	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-	import * as _10print from "$lib/drawings/10print";
+  import Button3D from "$lib/components/Button3D.svelte";
+  import SmallCanvas from "$lib/components/SmallCanvas.svelte";
+  import * as _10print from "$lib/drawings/10print";
 </script>
 
 <SmallCanvas id="10-print" init = {_10print.init}
@@ -15,7 +16,7 @@
   </svelte:fragment>
   <svelte:fragment slot="control">
     <div class="control-item">
-      <button class="btn" id="10-print-redraw" on:click={_10print.draw}>Redraw</button>
+      <Button3D on:click={_10print.draw}>Redraw</Button3D>
     </div>
   </svelte:fragment>
 </SmallCanvas>

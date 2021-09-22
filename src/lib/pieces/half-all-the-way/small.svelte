@@ -3,6 +3,7 @@
   import { getScaled2dContext } from "$lib/canvasUtil.mjs";
   import { paleYellowPink as paletteImport, shuffle } from "$lib/palettes.mjs";
   import CheckWithLabel from "$lib/components/CheckWithLabel.svelte";
+  import Button3D from "$lib/components/Button3D.svelte";
   
   let canvas;
   let ctx, width, height;
@@ -136,7 +137,7 @@
       <CheckWithLabel bind:checked={drawCirclePoints} label="Draw circles" on:change={draw}/>
     </div>
     <div class="control-item">
-      <button class="btn" id="half-redraw" on:click={draw}>Redraw</button>
+      <Button3D on:click={draw}>Redraw</Button3D>
     </div>
   </svelte:fragment>
 </SmallCanvas>

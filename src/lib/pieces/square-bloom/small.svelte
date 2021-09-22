@@ -1,9 +1,10 @@
 <script>
   import { onMount } from 'svelte';
-	import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-	import * as squareBloom from "$lib/drawings/squareBloom";
-	import { slide } from 'svelte/transition';
+  import SmallCanvas from "$lib/components/SmallCanvas.svelte";
+  import * as squareBloom from "$lib/drawings/squareBloom";
+  import { slide } from 'svelte/transition';
   import RadioWithLabel from "$lib/components/RadioWithLabel.svelte";
+  import Button3D from '$lib/components/Button3D.svelte';
 
   let drawStyles = ["Fill", "Border"];
   let drawStyle = drawStyles[Math.floor(Math.random() * drawStyles.length)];
@@ -60,7 +61,7 @@
       </div>
     {/if}
     <div class="control-item">
-      <button class="btn" id="square-bloom-redraw" on:click={redraw}>Redraw</button>
+      <Button3D on:click={redraw}>Redraw</Button3D>
     </div>
   </svelte:fragment>
 </SmallCanvas>
