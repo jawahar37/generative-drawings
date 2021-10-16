@@ -10,9 +10,9 @@
   <span class="shadow" aria-hidden="true"></span>
   <span class="edge" aria-hidden="true"></span>
   <span class="edge-shadow" aria-hidden="true"></span>
-  <span class="front">
+  <span class="face">
     <slot/>
-    <span class="disabled" aria-hidden="true"></span>
+    <span class="disabled-overlay" aria-hidden="true"></span>
   </span>
 </button>
 
@@ -62,7 +62,7 @@
       hsl(0deg 0% 0% / 0.5) 100%
     );
   }
-  .front {
+  .face {
     display: block;
     position: relative;
     padding: 0.25em 0.5em;
@@ -79,7 +79,7 @@
       cubic-bezier(.3, .7, .4, 1);
   }
   @media(hover:none) {
-    button:not(:disabled) .front {
+    button:not(:disabled) .face {
       transform: translateY(-4px);
       transition:
         transform
@@ -98,7 +98,7 @@
     button:not(:disabled):hover {
       filter: brightness(110%);
     }
-    button:not(:disabled):hover .front {
+    button:not(:disabled):hover .face {
       transform: translateY(-5px);
       transition:
         transform
@@ -113,7 +113,7 @@
         cubic-bezier(0, 1.4, 1, 1.2);
     }
   }
-  button:active:not(:disabled) .front {
+  button:active:not(:disabled) .face {
     transform: translateY(-2px);
     transition: transform 30ms;
   }
@@ -125,12 +125,12 @@
   button:focus:not(:focus-visible) {
     outline: none;
   }
-  button:disabled .front  {
+  button:disabled .face  {
     transform: translateY(-2px);
     border-color: hsl(0deg 0% 60%);
     cursor: not-allowed;
   }
-  button:disabled .disabled {
+  button:disabled .disabled-overlay {
     display: block;
     position: absolute;
     top: 0;
