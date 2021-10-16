@@ -1,7 +1,7 @@
 <script>
   import Button3D from "$lib/components/Button3D.svelte";
   import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-  import * as _10print from "$lib/drawings/10print";
+  import * as _10print from "./10print";
 </script>
 
 <SmallCanvas id="10-print" init = {_10print.init}

@@ -1,7 +1,7 @@
 <script>
   import CheckWithLabel from "$lib/components/CheckWithLabel.svelte";
   import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-  import * as spiro from "$lib/drawings/spiro";
+  import * as spiro from "./spiro";
 
   let radiusRatio = 0.667;
   let loops = 3;

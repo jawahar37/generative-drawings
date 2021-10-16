@@ -1,7 +1,7 @@
 <script>
   import { base } from '$app/paths';
   import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-  import * as numberCircle from "$lib/drawings/numberCircle";
+  import * as numberCircle from "./numberCircle";
 
   let n = 10;
 </script>

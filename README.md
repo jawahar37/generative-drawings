@@ -5,4 +5,4 @@ Code can compute and draw many elements consistently, incorporate randomness, an
 
 Check out https://jawahar37.github.io/generative-drawings to play around with these projects live.
 
-The core code for the drawings can be found at https://github.com/jawahar37/generative-drawings/tree/main/src/lib/drawings.
+The core code for the drawings can be found at https://github.com/jawahar37/generative-drawings/tree/main/src/lib/pieces.

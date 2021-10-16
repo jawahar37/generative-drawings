@@ -1,7 +1,7 @@
 <script>
+  import * as squareBloom from "./squareBloom";
   import { onMount } from 'svelte';
   import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-  import * as squareBloom from "$lib/drawings/squareBloom";
   import { slide } from 'svelte/transition';
   import RadioWithLabel from "$lib/components/RadioWithLabel.svelte";
   import Button3D from '$lib/components/Button3D.svelte';
