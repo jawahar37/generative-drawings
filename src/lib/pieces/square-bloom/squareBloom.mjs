@@ -1,4 +1,5 @@
 import { getScaled2dContext } from "$lib/canvasUtil.mjs"
+import { rainbow5 as paletteImport } from "$lib/palettes.mjs";
 
 let canvas;
 let ctx, width, height;
@@ -6,7 +7,7 @@ let ctx, width, height;
 let count = 10000,
 maximumAttempts = 100;
 
-let pallete = ["#ff595e","#ffca3a","#8ac926","#1982c4", "#6A4C93"];
+let palette = paletteImport;
 
 function Square(x, y, size) {
   this.x = x;
@@ -24,14 +25,14 @@ Square.prototype.isPointEnclosed = function(x, y) {
 };
 
 Square.prototype.stroke = function() {
-  ctx.strokeStyle = pallete[rangeFloor(0, pallete.length)];
+  ctx.strokeStyle = palette[rangeFloor(0, palette.length)];
   ctx.beginPath();
   ctx.rect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
   ctx.stroke();
 };
 
 Square.prototype.fill = function() {
-  ctx.fillStyle = pallete[rangeFloor(0, pallete.length)];
+  ctx.fillStyle = palette[rangeFloor(0, palette.length)];
   ctx.beginPath();
   ctx.rect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
   ctx.fill();
