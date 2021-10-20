@@ -1,10 +1,12 @@
 /** @type {import('@sveltejs/kit').Config} */
 import adapter from '@sveltejs/adapter-static';
 
+const dev = process.env.NODE_ENV === 'development';
+
 const config = {
 	kit: {
 		paths: {
-			base: '/generative-drawings',
+			base: dev ? '' : '/generative-drawings',
 		},
 		target: '#svelte',
 		adapter: adapter({
