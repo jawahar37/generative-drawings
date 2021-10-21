@@ -9,7 +9,8 @@
   "devDependencies": {
     "@sveltejs/adapter-static": "^1.0.0-next.12",
     "@sveltejs/kit": "^1.0.0-next.147",
-    "svelte": "^3.34.0"
+    "svelte": "^3.34.0",
+    "lodash": "latest"
   },
   "type": "module"
 }
