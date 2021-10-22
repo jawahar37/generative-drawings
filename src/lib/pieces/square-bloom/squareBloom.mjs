@@ -5,7 +5,7 @@ import Vector2 from '$lib/Vector2';
 let canvas;
 let ctx, width, height;
 
-const count = 10000,
+const count = 25000,
 maximumAttempts = 100;
 
 let palette = paletteImport;
