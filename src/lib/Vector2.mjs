@@ -27,8 +27,12 @@ Vector2.prototype = {
 		return new Vector2(this.x - vector.x, this.y - vector.y);
 	},
 
-	scale: function(scalar) {
+	multiply: function(scalar) {
 		return new Vector2(this.x * scalar, this.y * scalar);
+	},
+
+	divide: function(scalar) {
+		return new Vector2(this.x / scalar, this.y / scalar);
 	},
 
 	dot: function(vector) {
