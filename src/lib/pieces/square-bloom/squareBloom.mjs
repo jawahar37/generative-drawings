@@ -1,99 +1,117 @@
 import { getScaled2dContext } from "$lib/canvasUtil.mjs"
-import { rainbow5 as paletteImport } from "$lib/palettes.mjs";
+import { rainbow5 as paletteImport, pickRandom} from "$lib/palettes.mjs";
+import Vector2 from '$lib/Vector2';
 
 let canvas;
 let ctx, width, height;
 
-let count = 10000,
+const count = 10000,
 maximumAttempts = 100;
 
 let palette = paletteImport;
 
-function Square(x, y, size) {
-  this.x = x;
-  this.y = y;
+function Square(pos, size, parent) {
+  this.pos = pos;
   this.size = size;
+  this.parent = parent;
   this.children = [];
 }
 
-Square.prototype.getChebyshevCenterDistance = function(x, y) {
-  return Math.max(Math.abs(this.x - x), Math.abs(this.y - y));
-};
+Square.prototype.distance = function(point) {
+  return this.pos.chebyshev(point);
+}
 
-Square.prototype.isPointEnclosed = function(x, y) {
-  return this.getChebyshevCenterDistance(x, y) <= this.size;
+Square.prototype.isDistanceEnclosed = function(distance) {
+  return distance <= this.size;
 };
 
 Square.prototype.stroke = function() {
-  ctx.strokeStyle = palette[rangeFloor(0, palette.length)];
+  ctx.strokeStyle = pickRandom(palette);
   ctx.beginPath();
-  ctx.rect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+  let pos = this.pos.subtract(new Vector2(this.size, this.size));
+  ctx.rect(pos.x, pos.y, this.size * 2, this.size * 2);
   ctx.stroke();
 };
 
 Square.prototype.fill = function() {
-  ctx.fillStyle = palette[rangeFloor(0, palette.length)];
+  ctx.fillStyle = pickRandom(palette);
   ctx.beginPath();
-  ctx.rect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+  let pos = this.pos.subtract(new Vector2(this.size, this.size));
+  ctx.rect(pos.x, pos.y, this.size * 2, this.size * 2);
   ctx.fill();
 };
+
+function generateCandidateSquare(point, parent, offset) {
+  let potentialSize = parent.size - Vector2.zero().chebyshev(point);
+  //check if the point is in any of the parent's descendants
+  for(let i = 0; i < parent.children.length; i++) {
+    let square = parent.children[i];
+    let distance = square.distance(point);
+    if(square.isDistanceEnclosed(distance)) {
+      return generateCandidateSquare(point.subtract(square.pos), square, offset.add(square.pos));
+    }
+    else {
+      potentialSize = Math.min(distance - square.size, potentialSize);
+    }
+  }
+  //return parent if the point is, instead, a direct descendant of parent
+  return {offsetPoint: point, parent, potentialSize};
+}
 
 function generateSquares(root, padding, threshold) {
   let squaresGenerated = 0;
 
   while(squaresGenerated < count) {	//generate new squares till either enough squares are drawn are till attempts expire
     let attemptsLeft = maximumAttempts;
-  
     while(--attemptsLeft > 0) {
-      let x = rangeFloor(0, width);
-      let y = rangeFloor(0, height);
-      let enclosingRoot = getEnclosingSquare(x, y, root);
-      let size = getFeasibleSize(x, y, enclosingRoot) - padding;
-
+      let newPoint = new Vector2(
+        rangeFloor(-root.size, root.size),
+        rangeFloor(-root.size, root.size)
+      );
+      let {offsetPoint, parent, potentialSize} = generateCandidateSquare(newPoint, root, root.pos);
+      let size = potentialSize - padding;
       if(size > threshold) {	//filters squares that are too small
-        let square = new Square(x, y, size);
-        enclosingRoot.children.push(square);
+        let square = new Square(offsetPoint, size, parent);
+        square.globalPos = newPoint;
+        // parent.children.push(square);
+        sortedPush(parent.children, square, (a, b) => {return a.size - b.size})
         squaresGenerated++;
         break;
       }
     }
-    if(attemptsLeft <= 0)	//halt generation of squares if attempts run out
+    if(attemptsLeft <= 0)	//halt generation of squares after maximumAttempts consecutive failures.
       break;
   }
 }
 
-function getEnclosingSquare(x, y, root) {
-  let enclosingRoot = root;
-
-  if(root.children.length > 0) {
-    root.children.forEach(function(square) {
-      if(square.isPointEnclosed(x, y)) {
-        enclosingRoot = getEnclosingSquare(x, y, square);
-      }
-    });
+function sortedPush(array, element, compare) {
+  array.push(element);
+  let i = array.length - 1;
+  while(i > 0 && compare(element, array[i-1]) > 0) {
+    array[i] = array[i-1];
+    i--;
   }
-  return enclosingRoot;	//return root if the point is outside all children
-}
-
-function getFeasibleSize(x, y, root) {
-  let potentialSize = root.size; //intialize potential size to the largest value it can take.
-
-    potentialSize = Math.min(root.size - root.getChebyshevCenterDistance(x, y), potentialSize);
-
-    root.children.forEach(function(square) {	//find the closest square
-      potentialSize = Math.min(square.getChebyshevCenterDistance(x, y) - square.size, potentialSize);
-    });
-  return potentialSize;
+  array[i] = element;
 }
 
 function drawSquaresBorders(root) {
   root.stroke();
-  root.children.forEach(drawSquaresBorders);
+  if(root.children.length > 0) {
+    ctx.save();
+    ctx.translate(root.pos.x, root.pos.y);
+    root.children.forEach(drawSquaresBorders);
+    ctx.restore();
+  }
 }
 
 function drawSquaresFill(root) {
   root.fill();
-  root.children.forEach(drawSquaresFill);
+  if(root.children.length > 0) {
+    ctx.save();
+    ctx.translate(root.pos.x, root.pos.y);
+    root.children.forEach(drawSquaresFill);
+    ctx.restore();
+  }
 }
 
 function rangeFloor(min, max) {
@@ -107,19 +125,23 @@ function init(canvasIn, canvasWidth, canvasHeight) {
   height = canvasHeight;
 
   ctx = getScaled2dContext(canvas, width, height);
-
+  width /= 2;
+  height /= 2;
+  ctx.translate(width, height);
+  
   let {padding, threshold, borderWidth} = presets.medium;
   draw(padding, threshold, borderWidth);
 }
 
 function draw(padding, threshold, borderWidth, style) {
-  ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(-width, -height, 2*width, 2*height);
+  let superRoot = new Square(Vector2.zero(), 1000000, null); //acts as sentinel for dealing with root's parent; never drawn
+  let root = new Square(Vector2.zero(), width - borderWidth, superRoot);
 
-  let root = new Square(width/2, height/2, (width + padding)/2);
   generateSquares(root, padding, threshold);
   
   ctx.lineWidth  = borderWidth;
-
+  
   if(style == "Border") {
     drawSquaresBorders(root);
   }
