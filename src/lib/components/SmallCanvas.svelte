@@ -73,6 +73,7 @@
     display: flex;
     align-self: center;
     justify-content: center;
+    user-select: none;
   }
 
   canvas {

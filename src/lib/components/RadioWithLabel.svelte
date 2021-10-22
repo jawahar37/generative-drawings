@@ -42,7 +42,7 @@
   }
   .radioGroup {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     padding: 0;
     border: 1px solid var(--textColor);
     border-radius: var(--border-radius);
@@ -55,7 +55,12 @@
     padding: 0.25em 0.5em;
     margin: 0;
     border-right: 1px solid var(--textColor);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
   }
+  
   .radio:first-of-type label {
     border-radius: var(--border-radius) 0 0 var(--border-radius);
   }
