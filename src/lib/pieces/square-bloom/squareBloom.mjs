@@ -132,6 +132,12 @@ function draw(padding, threshold, borderWidth, style) {
 }
 
 let presets = {
+  "verySmall": {
+    "name": "Very Small",
+    "padding": 1,
+    "threshold": 1,
+    "borderWidth": 0.75
+  },
   "small": {
     "name": "Small",
     "padding": 2,
