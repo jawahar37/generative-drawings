@@ -121,7 +121,7 @@
   }
 </script>
 
-<SmallCanvas id="new" init = {init}
+<SmallCanvas id="half-all-the-way" init = {init}
   style={{
     background:"#001427",
     text:"#ffffff",

@@ -16,7 +16,7 @@
 	});
 </script>
 
-<section>
+<section {id}>
   <div class="container" style="{`--backgroundColor: ${style.background}; --textColor: ${style.text}`}">
     <div class="info-container">
       <div class="info">
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="canvas">
-      <canvas {id} bind:this={canvas}/>
+      <canvas bind:this={canvas}/>
     </div>
   </div>
 </section>

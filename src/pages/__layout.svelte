@@ -2,6 +2,18 @@
 <script>
   import "../app.css";
   import { base } from '$app/paths';
+  import { onMount } from 'svelte';
+
+  onMount(scrollToHashIfExists);
+
+  function scrollToHashIfExists() {
+    let hashID = window.location.hash;
+    let hashElement = document.getElementById(hashID);
+
+    if(hashElement) {
+      hashElement.scrollIntoView();
+    }
+  }
 </script>
 
 <svelte:head>
