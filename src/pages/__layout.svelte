@@ -2,19 +2,19 @@
 <script>
   import "../app.css";
   import { base } from '$app/paths';
-  import { onMount } from 'svelte';
 
-  onMount(scrollToHashIfExists);
 
   function scrollToHashIfExists() {
     let hashID = window.location.hash;
     let hashElement = document.getElementById(hashID);
-
+    
     if(hashElement) {
       hashElement.scrollIntoView();
     }
   }
 </script>
+
+<svelte:window onload=scrollToHashIfExists />
 
 <svelte:head>
   <link rel="apple-touch-icon" sizes="180x180" href="{base}/apple-touch-icon.png">
