@@ -9,6 +9,7 @@ const count = 25000,
 maximumAttempts = 100;
 
 let palette = paletteImport;
+const backgroundColor = "#0D1821";
 
 function Square(pos, size, parent) {
   this.pos = pos;
@@ -134,7 +135,9 @@ function init(canvasIn, canvasWidth, canvasHeight) {
 }
 
 function draw(padding, threshold, borderWidth, style) {
-  ctx.clearRect(-width, -height, 2*width, 2*height);
+  ctx.fillStyle = backgroundColor;
+  ctx.rect(-width, -height, 2*width, 2*height);
+  ctx.fill();
   let superRoot = new Square(Vector2.zero(), 1000000, null); //acts as sentinel for dealing with root's parent; never drawn
   let root = new Square(Vector2.zero(), width - borderWidth, superRoot);
 
