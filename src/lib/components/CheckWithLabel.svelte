@@ -11,6 +11,7 @@
 </script>
 
 <!--
+  @component
   Creates a checkbox input and a label.
   The state is set in 'checked'. The input can be disabled with 'disabled'.
   If no 'id' is set, it will be auto-generated.

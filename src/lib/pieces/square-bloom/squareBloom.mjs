@@ -11,11 +11,15 @@ maximumAttempts = 100;
 let palette = paletteImport;
 const backgroundColor = "#0D1821";
 
-function Square(pos, size, parent) {
+let superRoot = new Square(Vector2.zero(), 1000000, null); //acts as sentinel for dealing with root's parent; never drawn
+let root;
+
+function Square(pos, size, parent, color) {
   this.pos = pos;
   this.size = size;
   this.parent = parent;
   this.children = [];
+  this.color = color;
 }
 
 Square.prototype.distance = function(point) {
@@ -24,22 +28,6 @@ Square.prototype.distance = function(point) {
 
 Square.prototype.isDistanceEnclosed = function(distance) {
   return distance <= this.size;
-};
-
-Square.prototype.stroke = function() {
-  ctx.strokeStyle = pickRandom(palette);
-  ctx.beginPath();
-  let pos = this.pos.subtract(new Vector2(this.size, this.size));
-  ctx.rect(pos.x, pos.y, this.size * 2, this.size * 2);
-  ctx.stroke();
-};
-
-Square.prototype.fill = function() {
-  ctx.fillStyle = pickRandom(palette);
-  ctx.beginPath();
-  let pos = this.pos.subtract(new Vector2(this.size, this.size));
-  ctx.rect(pos.x, pos.y, this.size * 2, this.size * 2);
-  ctx.fill();
 };
 
 function generateCandidateSquare(point, parent, offset) {
@@ -72,7 +60,7 @@ function generateSquares(root, padding, threshold) {
       let {offsetPoint, parent, potentialSize} = generateCandidateSquare(newPoint, root, root.pos);
       let size = potentialSize - padding;
       if(size > threshold) {	//filters squares that are too small
-        let square = new Square(offsetPoint, size, parent);
+        let square = new Square(offsetPoint, size, parent, pickRandom(palette));
         square.globalPos = newPoint;
         // parent.children.push(square);
         sortedPush(parent.children, square, (a, b) => {return a.size - b.size})
@@ -95,24 +83,43 @@ function sortedPush(array, element, compare) {
   array[i] = element;
 }
 
-function drawSquaresBorders(root) {
-  root.stroke();
-  if(root.children.length > 0) {
-    ctx.save();
-    ctx.translate(root.pos.x, root.pos.y);
-    root.children.forEach(drawSquaresBorders);
-    ctx.restore();
-  }
-}
 
-function drawSquaresFill(root) {
-  root.fill();
-  if(root.children.length > 0) {
-    ctx.save();
-    ctx.translate(root.pos.x, root.pos.y);
-    root.children.forEach(drawSquaresFill);
-    ctx.restore();
+function strokeSquare(square) {
+  ctx.strokeStyle = square.color;
+  ctx.beginPath();
+  let pos = square.pos.subtract(new Vector2(square.size, square.size));
+  ctx.rect(pos.x, pos.y, square.size * 2, square.size * 2);
+  ctx.stroke();
+};
+
+function fillSquare(square) {
+  ctx.fillStyle = square.color;
+  ctx.beginPath();
+  let pos = square.pos.subtract(new Vector2(square.size, square.size));
+  ctx.rect(pos.x, pos.y, square.size * 2, square.size * 2);
+  ctx.fill();
+};
+
+function drawElementsWithParameters(style, borderWidth, leafsOnly=false) {
+  let drawSquare = strokeSquare;
+  if(style == "Fill") {
+    drawSquare = fillSquare;
   }
+
+  ctx.lineWidth  = borderWidth; 
+
+  let drawRecursively = function(root) {
+    if(!leafsOnly || root.children.length == 0) { //if leafsOnly only draw squares with no children
+      drawSquare(root);
+    }
+    if(root.children.length > 0) {
+      ctx.save();
+      ctx.translate(root.pos.x, root.pos.y);
+      root.children.forEach(drawRecursively);
+      ctx.restore();
+    }
+  }
+  return drawRecursively;
 }
 
 function rangeFloor(min, max) {
@@ -134,27 +141,20 @@ function init(canvasIn, canvasWidth, canvasHeight) {
   draw(padding, threshold, borderWidth);
 }
 
-function draw(padding, threshold, borderWidth, style) {
+function draw(padding, threshold, borderWidth, style, leafsOnly=false, regenerate=true) {
   ctx.fillStyle = backgroundColor;
   ctx.rect(-width, -height, 2*width, 2*height);
   ctx.fill();
-  let superRoot = new Square(Vector2.zero(), 1000000, null); //acts as sentinel for dealing with root's parent; never drawn
-  let root = new Square(Vector2.zero(), width - borderWidth, superRoot);
 
-  generateSquares(root, padding, threshold);
+  if(regenerate || root === undefined) {
+    root = new Square(Vector2.zero(), width - borderWidth, superRoot, pickRandom(palette));
+    generateSquares(root, padding, threshold);  
+  }
   
-  ctx.lineWidth  = borderWidth;
-  
-  if(style == "Border") {
-    drawSquaresBorders(root);
-  }
-  else if (style == "Fill") {
-    drawSquaresFill(root);
-  }
-  else {
-    drawSquaresBorders(root);
-  }
+  let drawMethod = drawElementsWithParameters(style, borderWidth, leafsOnly);
+  drawMethod(root);
 }
+
 
 let presets = {
   "verySmall": {
