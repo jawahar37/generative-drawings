@@ -10,6 +10,7 @@ export let nightCrawler = ["#1e1916", "#16263d", "#398caa", "#7dd1d5", "#b9f4ee"
 
 export let paleYellowPink = ["#f6bd60","#f7ede2","#84a59d","#f5cac3","#f28482","#ea4856"]
 
+export let grace = ["#fff", "#aaa", "#777", "#ddd", "#999"];
 
 export function pickRandom(palette) {
   return palette[randomInt(palette.length)];
