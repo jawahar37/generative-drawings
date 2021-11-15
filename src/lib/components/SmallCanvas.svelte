@@ -116,7 +116,7 @@
     }
 
     .info {
-      max-width: 450px;
+      max-width: 500px;
       margin-right: 0;
     }
   }
