@@ -30,6 +30,8 @@
     white-space: nowrap;
     text-decoration: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
   svg {
     fill: var(--textColor);
