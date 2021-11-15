@@ -42,6 +42,7 @@
     padding: 0.25em 0.5em;
     cursor: pointer;
     margin: 0;
+    user-select: none;
   }
   div.checked {
     background: var(--textColor);
@@ -53,13 +54,11 @@
   }
 
   div:focus-within:not(.disabled){
-    text-decoration: underline;
     outline: dodgerblue auto 1px;
     outline-offset: -1px;
   }
   @media(hover) {
     div:hover:not(.disabled) {
-      text-decoration: underline;
       outline: dodgerblue auto 1px;
       outline-offset: -1px;
     }

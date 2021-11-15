@@ -59,6 +59,7 @@
     display: flex;
     align-items: center;
     text-align: center;
+    user-select: none;
   }
   
   .radio:first-of-type label {
@@ -73,13 +74,11 @@
     color: var(--backgroundColor);
   }
   input:focus-visible + label{
-    text-decoration: underline;
     outline: dodgerblue auto 1px;
     outline-offset: -1px;
   }
   @media(hover) {
     label:hover {
-      text-decoration: underline;
       outline: dodgerblue auto 1px;
       outline-offset: -1px;
     }
