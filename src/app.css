@@ -144,6 +144,7 @@ input:disabled {
   display: flex;
   align-items: center;
   gap: 0.6em;
+  flex-wrap: wrap;
 }
 
 
