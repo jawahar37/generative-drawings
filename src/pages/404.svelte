@@ -13,7 +13,7 @@
   let yDir = true;
 
   function init() {
-    img.width = innerWidth/4;
+    img.style.setProperty("width", `${innerWidth/4}px`);
     speed = innerWidth < 500 ? 1 : 2;
     resize();
 
@@ -75,6 +75,7 @@
     background: black;
   }
   img {
+    width: 200px;
     height: auto;
   }
   .info {
