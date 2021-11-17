@@ -7,18 +7,18 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-8c12494f.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-2e4436a9.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-285195c6.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-ecf922f4.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-e54d409b.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-b5799ee8.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/palettes-f4ba7ad8.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-61d1577b.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-eb4e50df.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-cebebb69.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-8c12494f.js";
+			import { start } from "/generative-drawings/_app/start-2e4436a9.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -32,7 +32,7 @@
 					error: null,
 					nodes: [
 						import("/generative-drawings/_app/pages/__layout.svelte-ecf922f4.js"),
-						import("/generative-drawings/_app/pages/index.svelte-e54d409b.js")
+						import("/generative-drawings/_app/pages/index.svelte-b5799ee8.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -107,10 +107,10 @@
     
     <div class="control-item">
 
-<div class="radioGroup svelte-165y4b6"><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-165y4b6">
-      <label for="drawStyle-Fill" class="svelte-165y4b6">Fill</label>
-    </div><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-165y4b6" checked>
-      <label for="drawStyle-Border" class="svelte-165y4b6 active">Border</label>
+<div class="radioGroup svelte-165y4b6"><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-165y4b6" checked>
+      <label for="drawStyle-Fill" class="svelte-165y4b6 active">Fill</label>
+    </div><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-165y4b6">
+      <label for="drawStyle-Border" class="svelte-165y4b6">Border</label>
     </div>
 </div></div>
     
@@ -133,8 +133,8 @@
     <div class="canvas svelte-jw2bxf"><canvas class="svelte-jw2bxf"></canvas></div></div>
 </section>
 	<section id="10-print"><div class="container svelte-jw2bxf" style="--backgroundColor: #453ba4; --textColor: #ffffff"><div class="info-container svelte-jw2bxf"><div class="info svelte-jw2bxf"><div class="about"><h2 class="svelte-jw2bxf">10 PRINT</h2>
-          <p>10 PRINT is a program written in the early 80s to run on a Commodore 64 system that generates a maze with a surprisingly simple condition. It prints either a \ or a / with a 50% probability.</p>
-    <p class="code svelte-v31k2v">10 PRINT CHR$ (205.5 + RND (1)); : GOTO 10</p>
+          <p>10 PRINT is a BASIC program written in the early 80s to run on a Commodore 64 system that generates a maze with a surprisingly simple condition. It prints either a \ or a / with a 50% probability.</p>
+    <p class="code svelte-v31k2v">10 PRINT CHR$ (205.5 + RND (1));<br> 20 GOTO 10</p>
   </div>
         <div class="control"><div class="control-item">
 
