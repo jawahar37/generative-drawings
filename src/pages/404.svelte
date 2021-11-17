@@ -54,7 +54,7 @@
   }
 
   function changeImageColor() {
-    img.style.setProperty('filter', `hue-rotate(${randomInt(0, 360)}deg) saturate(${randomInt(1, 30)})`);
+    img.style.setProperty('filter', `hue-rotate(${randomInt(0, 360)}deg) saturate(${randomInt(10, 2000)})`);
   }
 </script>
 
