@@ -49,8 +49,6 @@
 
     x = xDir ? (x + speed) : (x - speed);
     y = yDir ? (y + speed) : (y - speed);
-    // img.style.setProperty('left', `${x}px`);
-    // img.style.setProperty('top', `${y}px`);
     img.style.setProperty('transform', `translate(${x}px, ${y}px)`)
     requestAnimationFrame(draw);
   }
