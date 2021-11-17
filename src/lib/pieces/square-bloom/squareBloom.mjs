@@ -136,9 +136,6 @@ function init(canvasIn, canvasWidth, canvasHeight) {
   width /= 2;
   height /= 2;
   ctx.translate(width, height);
-  
-  let {padding, threshold, borderWidth} = presets.medium;
-  draw(padding, threshold, borderWidth);
 }
 
 function draw(padding, threshold, borderWidth, style, leafsOnly=false, regenerate=true) {
