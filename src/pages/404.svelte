@@ -9,10 +9,11 @@
 
   let x, y;
   let speed;
-  let xDir = true;
-  let yDir = true;
+  let xDir = 1;
+  let yDir = 1;
 
   function init() {
+    img.width = innerWidth/4;
     img.style.setProperty("width", `${innerWidth/4}px`);
     speed = innerWidth < 500 ? 1 : 2;
     resize();
@@ -20,6 +21,7 @@
     x = randomInt(0, width);
     y = randomInt(0, height);
     draw();
+    setTimeout(resize, 2000);
   }
   onMount(init);
 
@@ -31,24 +33,24 @@
   function draw() {
     let oldXDir = xDir, oldYDir = yDir;
     if(x <= 0) {
-      xDir = true;
+      xDir = 1;
     }
     else if (x >= width) {
-      xDir = false;
+      xDir = -1;
     }
     if(y <= 0) {
-      yDir = true;
+      yDir = 1;
     }
     else if (y >= height) {
-      yDir = false;
+      yDir = -1;
     }
 
     if(xDir != oldXDir || yDir != oldYDir) {
       changeImageColor();
     }
 
-    x = xDir ? (x + speed) : (x - speed);
-    y = yDir ? (y + speed) : (y - speed);
+    x = x + speed * xDir;
+    y = y + speed * yDir;
     img.style.setProperty('transform', `translate(${x}px, ${y}px)`)
     requestAnimationFrame(draw);
   }
