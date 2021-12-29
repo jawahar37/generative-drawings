@@ -7,18 +7,18 @@
 
 		
 
-		<link rel="modulepreload" href="/generative-drawings/_app/start-175ee99e.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/start-c68bb8c0.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/vendor-27219352.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/paths-45dac81d.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/pages/__layout.svelte-bd8f0c11.js">
-		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-b1f5ec93.js">
+		<link rel="modulepreload" href="/generative-drawings/_app/pages/index.svelte-cd48f9b2.js">
 		<link rel="modulepreload" href="/generative-drawings/_app/chunks/palettes-f4ba7ad8.js">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/start-61d1577b.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/__layout.svelte-eb4e50df.css">
 		<link rel="stylesheet" href="/generative-drawings/_app/assets/pages/index.svelte-cebebb69.css">
 
 		<script type="module">
-			import { start } from "/generative-drawings/_app/start-175ee99e.js";
+			import { start } from "/generative-drawings/_app/start-c68bb8c0.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"/generative-drawings","assets":"/generative-drawings"},
@@ -32,7 +32,7 @@
 					error: null,
 					nodes: [
 						import("/generative-drawings/_app/pages/__layout.svelte-bd8f0c11.js"),
-						import("/generative-drawings/_app/pages/index.svelte-b1f5ec93.js")
+						import("/generative-drawings/_app/pages/index.svelte-cd48f9b2.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -58,7 +58,12 @@
         <div class="control"><div class="control-group">
 
 <div class="svelte-1eiu0np checked"><input type="checkbox" id="check0"  class="svelte-1eiu0np" checked>
-  <label for="check0" class="svelte-1eiu0np">Draw circles</label>    
+  <label for="check0" class="svelte-1eiu0np">Draw rotated centers</label>    
+</div>
+      
+
+<div class="svelte-1eiu0np"><input type="checkbox" id="check1"  class="svelte-1eiu0np">
+  <label for="check1" class="svelte-1eiu0np">Draw corner points</label>    
 </div></div>
     <div class="control-item">
 
@@ -107,17 +112,17 @@
     
     <div class="control-item">
 
-<div class="radioGroup svelte-165y4b6"><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-165y4b6" checked>
-      <label for="drawStyle-Fill" class="svelte-165y4b6 active">Fill</label>
-    </div><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-165y4b6">
-      <label for="drawStyle-Border" class="svelte-165y4b6">Border</label>
+<div class="radioGroup svelte-165y4b6"><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Fill" value="Fill"  class="svelte-165y4b6">
+      <label for="drawStyle-Fill" class="svelte-165y4b6">Fill</label>
+    </div><div class="radio svelte-165y4b6"><input type="radio" name="drawStyle" id="drawStyle-Border" value="Border"  class="svelte-165y4b6" checked>
+      <label for="drawStyle-Border" class="svelte-165y4b6 active">Border</label>
     </div>
 </div></div>
     
     <div class="control-group control-item">
 
-<div class="svelte-1eiu0np"><input type="checkbox" id="check1"  class="svelte-1eiu0np">
-  <label for="check1" class="svelte-1eiu0np">Show inner squares only</label>    
+<div class="svelte-1eiu0np"><input type="checkbox" id="check2"  class="svelte-1eiu0np">
+  <label for="check2" class="svelte-1eiu0np">Show inner squares only</label>    
 </div></div>
     <div class="control-item">
 
@@ -161,8 +166,8 @@
         <input type="range" min="0" max="9" step="1" value="3"></div>
       <div class="control-group control-item">
 
-<div class="svelte-1eiu0np checked"><input type="checkbox" id="check2"  class="svelte-1eiu0np" checked>
-  <label for="check2" class="svelte-1eiu0np">Spin</label>    
+<div class="svelte-1eiu0np checked"><input type="checkbox" id="check3"  class="svelte-1eiu0np" checked>
+  <label for="check3" class="svelte-1eiu0np">Spin</label>    
 </div></div></div>
   </div></div></div>
     <div class="canvas svelte-jw2bxf"><canvas class="svelte-jw2bxf"></canvas></div></div>
