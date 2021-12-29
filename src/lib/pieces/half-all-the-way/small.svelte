@@ -18,13 +18,15 @@
     height = canvasHeight;
 
     ctx = getScaled2dContext(canvas, width, height, 3);
-
+    
+    palette = shuffle(paletteImport);
     draw();
   }
 
-  function draw() {
-    palette = shuffle(paletteImport);
-    ctx.clearRect(0, 0, width, height);
+  function draw(regenerate = true) {
+    if(regenerate) {
+      palette = shuffle(paletteImport);
+    }
 
     let elementFunction;
     elementFunction = function(...args) {
@@ -161,8 +163,8 @@
   </svelte:fragment>
   <svelte:fragment slot="control">
     <div class="control-group">
-      <CheckWithLabel bind:checked={drawRotatedCenters} label="Draw rotated centers" on:change={draw}/>
-      <CheckWithLabel bind:checked={drawCornerCircles} label="Draw corner points" on:change={draw}/>
+      <CheckWithLabel bind:checked={drawRotatedCenters} label="Draw rotated centers" on:change={() => draw(false)}/>
+      <CheckWithLabel bind:checked={drawCornerCircles} label="Draw corner points" on:change={() => draw(false)}/>
     </div>
     <div class="control-item">
       <Button3D on:click={draw}>Redraw</Button3D>
