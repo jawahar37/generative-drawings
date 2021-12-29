@@ -9,7 +9,8 @@
   let ctx, width, height;
   let palette;
 
-  let drawCirclePoints = true;
+  let drawCornerCircles = false;
+  let drawRotatedCenters = true;
   
   function init(canvasIn, canvasWidth, canvasHeight) {
     canvas = canvasIn;
@@ -26,14 +27,10 @@
     ctx.clearRect(0, 0, width, height);
 
     let elementFunction;
-    if(drawCirclePoints) {
-      elementFunction = function(...args) {
-        drawFourSquares(...args);
-        drawCircleIndicator(...args);
-      }
-    }
-    else {
-      elementFunction = drawFourSquares;
+    elementFunction = function(...args) {
+      drawFourSquares(...args);
+      if(drawCornerCircles) drawCircleIndicator(...args);
+      if(drawRotatedCenters) drawQuadCircle(...args);
     }
 
     drawSeries(elementFunction, 0, 0, width/2, height/2, 7);
@@ -97,12 +94,12 @@
 
     ctx.fillStyle = palette[1];
     ctx.beginPath();
-    ctx.rect(x        , y + height, width, height);
+    ctx.rect(x + width, y         , width, height);
     ctx.fill();
 
     ctx.fillStyle = palette[2];
     ctx.beginPath();
-    ctx.rect(x + width, y         , width, height);
+    ctx.rect(x        , y + height, width, height);
     ctx.fill();
     
     ctx.fillStyle = palette[3];
@@ -111,8 +108,38 @@
     ctx.fill();
   }
 
+  function drawQuadCircle(x, y, width, height) {
+    x += width/2;
+    y += height/2;
+    let radius = width/3;
+    
+    ctx.fillStyle = palette[3];
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, radius, Math.PI, 3*Math.PI/2);
+    ctx.fill();
+
+    ctx.fillStyle = palette[2];
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, radius, 3*Math.PI/2, 0);
+    ctx.fill();
+
+    ctx.fillStyle = palette[1];
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, radius, Math.PI/2, Math.PI);
+    ctx.fill();
+
+    ctx.fillStyle = palette[0];
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, radius, 0, Math.PI/2);
+    ctx.fill();
+  }
+
   function drawCircleIndicator(x, y, width, height) {
-    if(drawCirclePoints) {
+    if(drawCornerCircles) {
       ctx.fillStyle = palette[4];
       ctx.beginPath();
       ctx.arc(x, y, width/20, 0, 2*Math.PI);
@@ -134,7 +161,8 @@
   </svelte:fragment>
   <svelte:fragment slot="control">
     <div class="control-group">
-      <CheckWithLabel bind:checked={drawCirclePoints} label="Draw circles" on:change={draw}/>
+      <CheckWithLabel bind:checked={drawRotatedCenters} label="Draw rotated centers" on:change={draw}/>
+      <CheckWithLabel bind:checked={drawCornerCircles} label="Draw corner points" on:change={draw}/>
     </div>
     <div class="control-item">
       <Button3D on:click={draw}>Redraw</Button3D>
