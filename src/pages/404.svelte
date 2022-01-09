@@ -79,6 +79,7 @@
   img {
     width: 200px;
     height: auto;
+    will-change: transform, translate;
   }
   .info {
     width: 100%;
