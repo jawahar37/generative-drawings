@@ -13,7 +13,7 @@
   }}>
   <svelte:fragment slot="title"><a href="{base}/number-circle" class="link">Number Circle</a></svelte:fragment>>
   <svelte:fragment slot="about">
-    <p>Get evenly spaced points on a circle. Draw lines between them all. <a href="{base}/number-circle" class="link">See more...</a></p>
+    <p>Get evenly spaced points on a circle. Draw lines between them all. How about points in between? <a href="{base}/number-circle" class="link">See more...</a></p>
     
   </svelte:fragment>
   <svelte:fragment slot="control">
