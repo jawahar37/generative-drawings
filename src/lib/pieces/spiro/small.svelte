@@ -6,9 +6,10 @@
   let radiusRatio = 0.667;
   let loops = 3;
   let spin = true;
+  let thickness = 7;
 
   function redraw() {
-    spiro.draw(radiusRatio, loops, spin);
+    spiro.draw(radiusRatio, loops, spin, thickness);
   }
 </script>
 
@@ -38,6 +39,13 @@
       </div>
       <div class="control-group control-item">
         <CheckWithLabel label="Spin" bind:checked={spin} />
+      </div>
+    </div>
+    <div class="control-item">
+      <label for="spiro-thickness">Thickness:</label>
+      <div class="control-group">
+        <input id="spiro-thickness" type="number" min="1" max="20" step="1" bind:value={thickness} on:input={redraw} style="width: 6em;">
+        <input type="range" min="1" max="20" step="1" bind:value={thickness} on:input={redraw}>
       </div>
     </div>
   </svelte:fragment>

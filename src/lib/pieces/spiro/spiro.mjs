@@ -15,21 +15,21 @@ function init(canvasIn, canvasWidth, canvasHeight) {
   draw(0.667, 3);
 }
 
-function draw(radiusRatio, loops, spin) {
+function draw(radiusRatio, loops, spin, thickness = 7) {
   ctx.clearRect(0, 0, width, height);
-  ctx.lineWidth = 7;
 
   let totalRadius = height * 0.45;
   let innerRadius = totalRadius * radiusRatio;
   let outerRadius = totalRadius * (1 - radiusRatio);
   let rotationRatio = loops + 1;
-  drawSpiro(width/2, height/2, innerRadius, outerRadius, 1.0/rotationRatio, rotationRatio);
+  drawSpiro(width/2, height/2, innerRadius, outerRadius, 1.0/rotationRatio, rotationRatio, thickness);
   if(spin) {
     phase += 0.01;
   }
 }
 
-function drawSpiro(centerX, centerY, innerRadius, outerRadius, ratio, loops) {
+function drawSpiro(centerX, centerY, innerRadius, outerRadius, ratio, loops, thickness) {
+  ctx.lineWidth = thickness;
 
   let lastX = centerX + innerRadius + outerRadius * Math.cos(phase);
   let lastY = centerY + outerRadius * Math.sin(phase);
