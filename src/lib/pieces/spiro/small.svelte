@@ -1,7 +1,7 @@
 <script>
   import CheckWithLabel from "$lib/components/CheckWithLabel.svelte";
   import SmallCanvas from "$lib/components/SmallCanvas.svelte";
-  import * as spiro from "./spiro";
+  import { init, draw } from "./spiro.mjs";
 
   let radiusRatio = 0.667;
   let loops = 3;
@@ -9,16 +9,16 @@
   let thickness = 7;
 
   function redraw() {
-    spiro.draw(radiusRatio, loops, spin, thickness);
+    draw(radiusRatio, loops, spin, thickness);
   }
 </script>
 
-<SmallCanvas id="spiro" init = {spiro.init}
+<SmallCanvas id="spiro" init={init}
   style={{
     background:"#4C5454",
     text:"#ffffff",
   }}>
-  <svelte:fragment slot="title">Spiro</svelte:fragment>>
+  <svelte:fragment slot="title">Spiro</svelte:fragment>
   <svelte:fragment slot="about">
     <p>Tracing the path of a circle rolling around the perimeter of another circle gives a simple spirograph.</p>
     <p>Loopiness controls the relative sizes of the inner and outer circles, and Loops controls how many times the outer circle rolls around the inner one.</p>
